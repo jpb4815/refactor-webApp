@@ -1,0 +1,34 @@
+﻿<div class="pta-patient-widget">
+
+    <div class="pta-patient-heading">
+        <img class="pta-patient-icon" ng-src="images/patient.jpg" alt="patient" />
+        <span class="pta-patient-title">Patient</span>
+    </div>
+
+    <div class="pta-patient-body" ng-style="selectedPatient != null && {'background-image': 'url(/images/' + selectedPatient.image + ')'}">
+        <div class="pta-patient-area">
+
+            <div class="pta-patient-location-name">
+                {{ selectedProvider.name }}
+            </div>
+
+            <div class="pta-patient-item">
+                <img src="/images/excercise.png" />
+                <span class="pta-patient-amount">{{selectedProvider.excercises}}</span>
+                <span class="pta-patient-caption">Excercises</span>
+            </div>
+            <div class="pta-patient-item">
+                <img src="/images/calendar.jpg" />
+                <span class="pta-patient-amount">{{selectedProvider.duration}}</span>
+                <span class="pta-patient-caption">Duration</span>
+            </div>
+            <div class="pta-patient-item">
+                <img src="/images/doctor.jpg" />
+                <span class="pta-patient-amount">{{selectedProvider.therapist}}</span>
+                <span class="pta-patient-caption">Therapist</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,23 @@
+﻿<div class="pta-program-widget">
+
+<div class="pta-program-heading">
+    <img class="pta-program-icon" ng-src="images/excercise.png" alt="excercise" />
+    <span class="pta-program-title">Program</span>
+</div>
+
+<div class="pta-program-body" ng-style="selectedProgram != null && {'background-image': 'url(/images/' + selectedProgram.image + ')'}">
+    <div ng-if="!isLoaded && !hasError">
+        <i class="fa fa-refresh fa-2x fa-spin"></i>
+    </div>
+    <div ng-if="isLoaded" class="pta-program-view">
+        <div class="pta-program-program-name">
+            {{ selectedProgram.name }}
+        </div>
+    </div>
+    <div ng-if="hasError">
+        <h4>Error loading widget.</h4>
+        <button class="btn btn-primary" ng-click="loadProgram()">Reload</button>
+    </div>
+</div>
+
+</div>

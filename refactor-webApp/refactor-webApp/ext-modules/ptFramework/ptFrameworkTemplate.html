@@ -1,0 +1,35 @@
+﻿<div class="pt-title-bar">
+    <div class="row">
+        <div class="pt-logo-area col-sm-6">
+            <img class="pt-icon" ng-src="{{ iconFile }}" />
+            <div class="pt-title-area">
+                <p class="pt-logo-title">{{ title }}</p>
+                <p class="pt-logo-subtitle">{{ subtitle }}</p>
+            </div>
+
+            <div ng-if="isMenuButtonVisible" ng-click="menuButtonClicked()"
+                 class="pt-collapsed-menu pull-right">
+                <button type="button" class="btn pt-nav-button">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="pt-right-side-controls col-sm-6">
+            <pt-user-profile-small></pt-user-profile-small>
+        </div>
+    </div>
+</div>
+
+<div class="pt-menu-area"
+     ng-show="isMenuVisible"
+     ng-class="{'pt-menu-area-vertical': isMenuVertical, 'pt-menu-area-horizontal': !isMenuVertical}">
+    <pt-user-profile></pt-user-profile>
+    <ng-transclude></ng-transclude>
+</div>
+
+<div ng-view class="pt-view"
+     ng-class="{'pt-view-full-width': !isMenuVertical || !isMenuVisible}">
+</div>
+

@@ -1,0 +1,60 @@
+﻿
+.pta-program-widget {
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    color: black;
+}
+
+.pta-program-heading {
+    background-color: red;
+    color: white;
+    height: 32px;
+    padding-top: 2px;
+    font-size: 15px;
+    line-height: 32px;
+}
+
+.pta-program-icon {
+    height: 24px;
+    width: 24px;
+    margin-top: -2px;
+}
+
+.pta-program-body {
+    position: relative;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    min-height: 180px;
+}
+
+.pta-program-body .fa-spin {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.pta-program-view {
+    background-color: rgba(255,255,255,.7);
+    position: absolute;
+    right: 5px;
+    bottom: 38px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.pta-program-program-name {
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.pta-program-therapist {
+    font-size: 64px;
+    margin-top: -20px;
+}

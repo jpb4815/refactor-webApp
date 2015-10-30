@@ -1,0 +1,34 @@
+﻿[
+  {
+                "firstName": "Mike",
+                "lastName": "Gordon",
+                "mrn": "1234567890",
+                "ssn": "009-68-1234",
+                "injuryType": "Bursitis",
+                "injuryDate": "12/12/2001"
+            },
+            {
+                "firstName": "Trey",
+                "lastName": "Anastasio",
+                "mrn": "1234567890",
+                "ssn": "009-68-1234",
+                "injuryType": "Bursitis",
+                "injuryDate": "12/12/2001"
+            },
+            {
+                "firstName": "John",
+                "lastName": "Fishman",
+                "mrn": "1234567890",
+                "ssn": "009-68-1234",
+                "injuryType": "Bursitis",
+                "injuryDate": "12/12/2001"
+            },
+            {
+                "firstName": "Paige",
+                "lastName": "McConnel",
+                "mrn": "1234567890",
+                "ssn": "009-68-1234",
+                "injuryType": "Bursitis",
+                "injuryDate": "12/12/2001"
+            }
+]
