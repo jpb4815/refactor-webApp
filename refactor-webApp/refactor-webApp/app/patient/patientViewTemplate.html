@@ -1,2 +1,56 @@
-﻿<div >{{patientName}}</div>
-<h1>Patient view</h1>
+﻿<div class="container">
+    <div class="row">
+        <label for="patientSearch">Patient Search</label>
+        <input class="navbar col-md-3" id="patientSearch" placeholder="Enter Last Name"/>
+        <button class="btn btn-success" ng-click="patientSearch()">Search</button>
+    </div>
+</div><br/>
+<div>
+    <h2 class="page-title">Patients</h2>
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Injury</th>
+            <th>MRN#</th>
+            <th>SSN#</th>
+            <th>Program ID</th>
+        </tr>
+        <tbody>
+        <tr>
+            <td>
+                <input type="text" class="form-control" placeholder="Last Name" ng-model="vm.lastName"/>
+            </td>
+            <td>
+                <input type="text" class="form-control" placeholder="First Name" ng-model="vm.firstName"/>
+            </td>
+            <td>
+                <input type="text" class="form-control" placeholder="Injury" ng-model="vm.injury"/>
+            </td>
+            <td>
+                <input type="text" class="form-control" placeholder="MRN #" ng-model="vm.mrnNum"/>
+            </td>
+            <td>
+                <input type="text" class="form-control" placeholder="SSN #" ng-model="vm.ssnNum"/>
+            </td>
+            <td>
+                <input type="text" class="form-control" placeholder="Program ID" ng-model="vm.programId"/>
+            </td>
+        </tr>
+        </tbody>
+        </thead>
+    </table>
+</div>
+<div class="container pull-left">
+    <div class="btn-group" dropdown>
+        <button class="btn btn-success dropdown-toggle " dropdown-toggle-type="button">
+            Action <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a ng-click="vm.addPatient()">Add Patient</a></li>
+            <li><a ng-click="vm.editPatient(patient)">Edit Patient</a></li>
+            <li><a ng-click="vm.deletePatient(patient.id)">Delete Patient</a></li>
+        </ul>
+    </div>
+</div>

@@ -77,11 +77,17 @@
     <Content Include="app\directives\ptaResultsDirective.js" />
     <Content Include="app\directives\ptaTherapistDirective.js" />
     <Content Include="app\directives\ptaViewResultsDirective.js" />
+    <Content Include="app\services\app-spinner.service.js" />
+    <Content Include="app\services\dataservice1.js" />
+    <Content Include="app\services\modalDialogsService.js" />
+    <Content Include="app\services\ptaAPI.js" />
     <Content Include="app\therapist\excerciseTemplate.html" />
     <Content Include="app\results\resultsController.js" />
     <Content Include="app\results\resultsViewTemplate.html" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="packages.config" />
+    <Content Include="scripts\angular-resource.js" />
+    <Content Include="scripts\angular-resource.min.js" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="scripts\angular-gridster-master\.bowerrc" />
     <Content Include="scripts\angular-gridster-master\.editorconfig" />
@@ -104,6 +110,7 @@
     <Content Include="scripts\ngStorage-master\README.md" />
     <Content Include="scripts\angular-animate.min.js.map" />
     <Content Include="scripts\angular-route.min.js.map" />
+    <Content Include="scripts\angular-resource.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

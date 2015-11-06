@@ -20,63 +20,77 @@
                 url: '/provider',
                 config: {
                     template: '<pta-providers></pta-providers>',
-                    controller: 'providerController'
+                    controller: 'providerController',
+                    controllerAs: 'vm'
                 }
             },
             {
                 url: '/enterresults',
                 config: {
                     template: '<pta-enter-results></pta-enter-results>',
-                    controller: 'patientController'
+                    controller: 'patientController',
+                    controllerAs: 'vm'
                 }
             },
             {
                 url: '/viewresults',
                 config: {
                     template: '<pta-view-results></pta-view-results>',
-                    controller: 'patientController'
+                    controller: 'patientController',
+                    controllerAs: 'vm'
                 }
             },
             {
                 url: '/injurydictionary',
                 config: {
                     template: '<pta-injury-dictionary></pta-injury-dictionary>',
-                    controller: 'providerController'
+                    controller: 'providerController',
+                    controllerAs: 'vm'
                 }
             },
             {
                 url: '/excercisedictionary',
                 config: {
                     template: '<pta-excercise-dictionary></pta-excercise-dictionary>',
-                    controller: 'providerController'
+                    controller: 'providerController',
+                    controllerAs: 'vm'
                 }
             },
             {
                 url: '/therapist',
                 config: {
                     template: '<pta-therapist></pta-therapist>',
-                    controller: 'therapistController'
+                    controller: 'therapistController',
+                    controllerAs: 'vm'
                 }
             },
             {
                 url: '/programentry',
                 config: {
                     template: '<pta-program-entry></pta-program-entry>',
-                    controller: 'programsController'
+                    controller: 'programsController',
+                    controllerAs: 'vm'
                 }
             },
             {
                 url: '/results',
                 config: {
                     template: '<pta-results></pta-results>',
-                    controller: 'resultsController'
+                    controller: 'resultsController',
+                    controllerAs: 'vm'
                 }
             },
             {
                 url: '/excercise',
                 config: {
                     template: '<pta-excercise></pta-excercise>',
-                    controller: 'excerciseController'
+                    controller: 'excerciseController',
+                    controllerAs: 'vm',
+                    resolve: {
+                        initialData:['ptaAPI', function(ptaAPI) {
+                            return ptaAPI.getExcercises();
+                        }]
+                    }
                 }
             }
         ];

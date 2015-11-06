@@ -10,11 +10,3 @@
 .sign-in-form {
     padding: 80px;
 }
-.pt-ui-view-fix {
-    padding-top: 200px;
-    margin-left: 200px;
-    padding: 20px;
-    background-color: #ccc;
-    min-height: 100vh;
-    overflow: auto;
-}

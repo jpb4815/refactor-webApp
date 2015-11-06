@@ -6,7 +6,7 @@
         return {
             scope: {
             },
-            templateUrl: "app/therapist/excerciseTemplate.html"
+            templateUrl: "app/excercise/excerciseViewTemplate.html"
         }
     }]);
 })();

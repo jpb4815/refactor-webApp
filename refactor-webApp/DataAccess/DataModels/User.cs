@@ -9,6 +9,10 @@ namespace PTWebApp.DataModels
 {
     public class User
     {
+        public User()
+        {
+            Users = new List<User>();
+        }
         [Key]
         public int Id { get; set; }
         [Required]
@@ -16,11 +20,32 @@ namespace PTWebApp.DataModels
         [Required]
         public Role UseRole { get; set; }
         [Required]
-        public Person PersonId { get; set; }
+        public string FirstName { get; set; }
         [Required]
-        public Patient PatientId { get; set; }
+        public string LastName { get; set; }
         [Required]
-        public DateTime LastLoggedIn { get; set; }
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        [Required]
+        public string City { get; set; }
+        [Required]
+        public string County { get; set; }
+        [Required]
+        public string State { get; set; }
+        [Required]
+        public string ZipCode { get; set; }
+        [Required]
+        public string Country { get; set; }
+        [Required]
+        public string Telephone { get; set; }
+        [Required]
+        public string Telephone2 { get; set; }
+        public int MRN { get; set; }
+        public string SocialSecurityNumber { get; set; }
+        public string InjuryType { get; set; }
+        public DateTime InjuryDate { get; set; }
+        public string Location { get; set; }
+        public List<User> Users { get; set; } 
     }
 }
 public enum Role

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using DataAccessLayer.Repositories;
-using PTWebApp.Models;
-using DataAccessLayer.Repositories;
+using DataAccess.Repositories;
+using PTWebApp.DataModels;
 
 
 namespace PTWebApp.Controllers
@@ -15,11 +11,17 @@ namespace PTWebApp.Controllers
     [EnableCors("*","*","*")]
     public class PatientsController : ApiController
     {
-        // GET: api/Patient
-        public IEnumerable<PatientModel> Get()
+        private IPtaRepository _repo;
+
+        public PatientsController(IPtaRepository repo)
         {
-           var patientRepository = new PatientRepository();
-            return patientRepository.Retrieve();
+            _repo = repo;
+        }
+
+        // GET: api/Patient
+        public IEnumerable<User> Get()
+        {
+            return _repo.GetUsers().Where(u => u.UseRole == Role.Patient).ToList();
         }
 
         // GET: api/Patient/5

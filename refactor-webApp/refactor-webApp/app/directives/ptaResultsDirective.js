@@ -6,7 +6,7 @@
         return {
             scope: {
             },
-            templateUrl: "viewResultsTemplate.html"
+            templateUrl: "app/results/viewResultsTemplate.html"
         }
     }]);
 })
