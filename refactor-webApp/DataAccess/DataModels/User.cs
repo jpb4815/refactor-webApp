@@ -37,14 +37,12 @@ namespace PTWebApp.DataModels
         [Required]
         public string Country { get; set; }
         [Required]
-        public string Telephone { get; set; }
-        [Required]
+        public string Telephone { get; set; }        
         public string Telephone2 { get; set; }
-        public int MRN { get; set; }
         public string SocialSecurityNumber { get; set; }
         public string InjuryType { get; set; }
-        public DateTime InjuryDate { get; set; }
         public string Location { get; set; }
+        public string DeaNumber { get; set; }
         public List<User> Users { get; set; } 
     }
 }

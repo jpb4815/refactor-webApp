@@ -1,1 +1,28 @@
-﻿<h1>Therapist View</h1>
+﻿<div ng-controller="therapistController as vm">
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">
+            <h2>Therapist List</h2>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <td class="col-sm-4">Therapist ID</td>
+                        <td class="col-sm-4">Therapist Name</td>
+                        <td class="col-sm-4">Therapist Location</td>
+                        </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="therapist in vm.therapists">
+                        <td>{{therapist.id}}</td>
+                        <td>{{therapist.firstName + " " + therapist.lastName}}</td>
+                        <td>{{therapist.location}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-group">
+            <button class="btn" ng-click="vm.addTherapist()">Add Therapist</button>
+        </div>
+    </div>
+</div>

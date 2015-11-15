@@ -1,19 +1,30 @@
-﻿(function() {
+﻿(function () {
     "use strict";
-    
-    angular.module('app').controller("patientController", ["$scope", "$http", "dataService1",
 
-    function($scope, $http, dataService1) {
-      
-        $scope.patientSearch = function () {
-                dataService1.getPatients()
-                    .then(function () {
+    angular.module('app').controller("patientController", ["$http", "$location", patientController]);
 
-                    }),
+    function patientController($http, $location) {
+        /* jshint validthis: true */
+        var vm = this;
+        vm.patients = [];
+
+        $http.get("http://localhost:55928/api/Patients")
+            .then(function (result) {
+                //success
+                angular.copy(result.data, vm.patients);
+            },
                 function () {
+                    //error
+                    alert("you suck Die!!!!!!");
+                });
 
-                }
-            }        
+        vm.addPatient = function () {
+            $location.path("/userentry");
+        }
 
-    }]);               
+
+
+
+    }
+
 })();

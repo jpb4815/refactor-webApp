@@ -1,48 +1,64 @@
-﻿<div>
-    <h2 class="page-title">Excercises</h2>
-
-    <table class="table table-bordered table-hover table-striped">
-        <thead>
-        <tr>
-            <th>Excercise Name</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <input type="text" class="form-control" placeholder="Excercise Name" ng-model="vm.excerciseName"/>
-            </td>
-            <td>
-                <button type="submit" class="btn btn-primary" ng-click="vm.addExcercise()"
-                        tooltip="Click here to add new excercise" tooltip-placement="right">
-                    <span class="glyphicon glyphicon-plus"></span> Add
-                </button>
-            </td>
-        </tr>
-
-        <tr ng-repeat="excercise in vm.excercises">
-            <td ng-hide="vm.currentEdit[excercise.id]">{{excercise.name}}</td>
-            <td ng-show="vm.currentEdit[excercise.id]">
-                <input type="text" class="form-control" ng-model="vm.itemToEdit.name"/>
-            </td>
-
-            <td>
-                <div class="btn-group" dropdown ng-hide="vm.currentEdit[excercise.id]">
-                    <button class="btn btn-success dropdown-toggle" dropdown-toggle type="button">
-                        Action <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a ng-click="vm.addExcercise()">Add</a></li>
-                        <li><a ng-click="vm.editExcercise(excercise)">Edit</a></li>
-                        <li><a ng-click="vm.deleteExcercise(excercise.id)">Delete</a></li>
-                    </ul>
+﻿<div ng-controller="excerciseController as vm">
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">
+            <h2>Excercise List</h2>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <div>
+                    <input type="text" id="searchField" name="searchField" ng-model="searchField"/>
+                    <button class="btn btn-primary" ng-click="vm.Search(searchField)">Search</button>
                 </div>
-
-                <button class="btn btn-success" ng-show="vm.currentEdit[excercise.id]" ng-click="vm.saveItem(excercise)">Save</button>
-                <button class="btn btn-danger" ng-show="vm.currentEdit[excercise.id]" ng-click="vm.cancelEdit(excercise.id)">Cancel</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+                <div class="progress progress-striped active" ng-show="isBusy">
+                    <div class="bar" style="width: 100%"></div>
+                </div>
+                <tr>
+                    <td class="col-sm-2">Excercise ID</td>
+                    <td class="col-sm-2">Excercise Name</td>
+                    <td class="col-sm-6">Description</td>
+                    <td class="col-sm-2">Repetitions</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="excercise in vm.excercises.excercises">
+                    <td>{{excercise.id}}</td>
+                    <td>{{excercise.name}}</td>
+                    <td>{{excercise.description}}</td>
+                    <td>{{excercise.repetitions}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-group">
+            <button class="btn" ng-click="vm.addExcercise()">Add Excercise</button>
+        </div>
+    </div>
+    <div class="panel panel-primary" ng-show="vm.isAddExe">
+        <div class="panel-header">
+            <h2>Add Excercise</h2>
+            <form role="form" name="newExcerciseForm" class="form-horizontal" novalidate ng-submit="vm.save()">
+                <div>
+                    <label for="name" class="col-sm-3 control-label">Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="name" placeholder="Name" class="form-control" ng-model="vm.newExcercise.name" required/>
+                        <span class="error" ng-show="newExcerciseForm.name.$error.required">*</span>
+                    </div>
+                    <label for="description" class="col-sm-3 control-label">Description</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="description" placeholder="Description" class="form-control" ng-model="vm.newExcercise.description" required/>
+                        <span class="error" ng-show="newExcerciseForm.description.$error.required">*</span>
+                    </div>
+                    <label for="reps" class="col-sm-3 control-label">Repetitions</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="reps" placeholder="Repetitions" class="form-control" ng-model="vm.newExcercise.repetitions" required/>
+                        <span class="error" ng-show="newExcerciseForm.repetitions.$error.required">*</span>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" class="btn" value="Save" ng-disabled="newExcerciseForm.$invalid"/>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

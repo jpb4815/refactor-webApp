@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
@@ -14,27 +15,27 @@ using PTWebApp.DataModels;
 
 namespace PTWebApp.Controllers
 {
-    [EnableCors("*","*","*")]
-    public class PatientsController : ApiController
+    [EnableCors("*", "*", "*")]
+    public class TherapistsController : ApiController
     {
         private PTAContext _ctx;
 
-        public PatientsController(PTAContext ctx)
+        public TherapistsController(PTAContext ctx)
         {
             _ctx = ctx;
         }
 
-        // GET: api/Patients
+        // GET: api/Therapists
         public IQueryable<User> GetUsers()
         {
-            return _ctx.Users.Where(u=>u.UseRole == Role.Patient);
+            return _ctx.Users.Where(t=>t.UseRole == Role.Therapist);
         }
 
-        // GET: api/Patients/5
+        // GET: api/Therapists/5
         [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        public async Task<IHttpActionResult> GetUser(int id)
         {
-            User user = _ctx.Users.Find(id);
+            User user = await _ctx.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -43,9 +44,9 @@ namespace PTWebApp.Controllers
             return Ok(user);
         }
 
-        // PUT: api/Patients/5
+        // PUT: api/Therapists/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public async Task<IHttpActionResult> PutUser(int id, User user)
         {
             if (!ModelState.IsValid)
             {
@@ -61,7 +62,7 @@ namespace PTWebApp.Controllers
 
             try
             {
-                _ctx.SaveChanges();
+                await _ctx.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -78,9 +79,9 @@ namespace PTWebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Patients
+        // POST: api/Therapists
         [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        public async Task<IHttpActionResult> PostUser(User user)
         {
             if (!ModelState.IsValid)
             {
@@ -88,23 +89,23 @@ namespace PTWebApp.Controllers
             }
 
             _ctx.Users.Add(user);
-            _ctx.SaveChanges();
+            await _ctx.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
         }
 
-        // DELETE: api/Patients/5
+        // DELETE: api/Therapists/5
         [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
+        public async Task<IHttpActionResult> DeleteUser(int id)
         {
-            User user = _ctx.Users.Find(id);
+            User user = await _ctx.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
 
             _ctx.Users.Remove(user);
-            _ctx.SaveChanges();
+            await _ctx.SaveChangesAsync();
 
             return Ok(user);
         }

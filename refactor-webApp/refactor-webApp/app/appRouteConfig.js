@@ -12,85 +12,68 @@
             {
                 url: '/patientlist',
                 config: {   
-                    template: '<pta-patient-list></pta-patient-list>',
-                    controller: 'patientController'
+                    templateUrl: 'app/patient/patientViewTemplate.html'
                 }
             },
             {
                 url: '/provider',
                 config: {
-                    template: '<pta-providers></pta-providers>',
-                    controller: 'providerController',
-                    controllerAs: 'vm'
+                    templateUrl: "app/provider/providerViewTemplate.html"
                 }
             },
             {
                 url: '/enterresults',
                 config: {
-                    template: '<pta-enter-results></pta-enter-results>',
-                    controller: 'patientController',
-                    controllerAs: 'vm'
+                    templateUrl: "app/patient/enterResultsTemplate.html"
                 }
             },
             {
                 url: '/viewresults',
                 config: {
-                    template: '<pta-view-results></pta-view-results>',
-                    controller: 'patientController',
-                    controllerAs: 'vm'
+                    templateUrl: "app/results/viewResultsTemplate.html"
                 }
             },
             {
                 url: '/injurydictionary',
                 config: {
-                    template: '<pta-injury-dictionary></pta-injury-dictionary>',
-                    controller: 'providerController',
-                    controllerAs: 'vm'
+                    templateUrl: "app/Admin/injuryDictionaryTemplate.html"
                 }
             },
             {
                 url: '/excercisedictionary',
                 config: {
-                    template: '<pta-excercise-dictionary></pta-excercise-dictionary>',
-                    controller: 'providerController',
-                    controllerAs: 'vm'
+                    templateUrl: "app/Admin/excerciseDictionaryTemplate.html"
                 }
             },
             {
                 url: '/therapist',
                 config: {
-                    template: '<pta-therapist></pta-therapist>',
-                    controller: 'therapistController',
-                    controllerAs: 'vm'
+                    templateUrl: "app/therapist/therapistViewTemplate.html"
                 }
             },
             {
                 url: '/programentry',
                 config: {
-                    template: '<pta-program-entry></pta-program-entry>',
-                    controller: 'programsController',
-                    controllerAs: 'vm'
-                }
+                    templateUrl: "app/therapist/programEntryTemplate.html"
+                    }
             },
             {
                 url: '/results',
                 config: {
-                    template: '<pta-results></pta-results>',
-                    controller: 'resultsController',
-                    controllerAs: 'vm'
+                    templateUrl: "app/patient/enterResultsTemplate.html"
                 }
             },
             {
                 url: '/excercise',
                 config: {
-                    template: '<pta-excercise></pta-excercise>',
-                    controller: 'excerciseController',
-                    controllerAs: 'vm',
-                    resolve: {
-                        initialData:['ptaAPI', function(ptaAPI) {
-                            return ptaAPI.getExcercises();
-                        }]
-                    }
+                    templateUrl:"app/excercise/excerciseViewTemplate.html"
+
+                }
+            },
+            {
+                url: '/userentry',
+                config: {
+                    templateUrl:"app/Admin/userEntryForm.html"
                 }
             }
         ];

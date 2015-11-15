@@ -9,55 +9,56 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using DataAccess.DataModels;
 using PTWebApp.DataContext;
-using PTWebApp.DataModels;
 
 namespace PTWebApp.Controllers
 {
-    [EnableCors("*","*","*")]
-    public class PatientsController : ApiController
+    [EnableCors("*", "*", "*")]
+    public class ExcercisesController : ApiController
     {
+        
         private PTAContext _ctx;
 
-        public PatientsController(PTAContext ctx)
+        public ExcercisesController(PTAContext ctx)
         {
             _ctx = ctx;
         }
 
-        // GET: api/Patients
-        public IQueryable<User> GetUsers()
+        // GET: api/Excercises
+        public IEnumerable<Excercise> GetExcercises()
         {
-            return _ctx.Users.Where(u=>u.UseRole == Role.Patient);
+            return _ctx.Excercises;
         }
 
-        // GET: api/Patients/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        // GET: api/Excercises/5
+        [ResponseType(typeof(Excercise))]
+        public IHttpActionResult GetExcercise(int id)
         {
-            User user = _ctx.Users.Find(id);
-            if (user == null)
+            Excercise excercise = _ctx.Excercises.Find(id);
+            if (excercise == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(excercise);
         }
 
-        // PUT: api/Patients/5
+        // PUT: api/Excercises/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public IHttpActionResult PutExcercise(int id, Excercise excercise)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != user.Id)
+            if (id != excercise.Id)
             {
                 return BadRequest();
             }
 
-            _ctx.Entry(user).State = EntityState.Modified;
+            _ctx.Entry(excercise).State = EntityState.Modified;
 
             try
             {
@@ -65,7 +66,7 @@ namespace PTWebApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!ExcerciseExists(id))
                 {
                     return NotFound();
                 }
@@ -78,35 +79,35 @@ namespace PTWebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Patients
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        // POST: api/Excercises
+        [ResponseType(typeof(Excercise))]
+        public IHttpActionResult PostExcercise(Excercise excercise)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _ctx.Users.Add(user);
+            _ctx.Excercises.Add(excercise);
             _ctx.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+            return CreatedAtRoute("DefaultApi", new { id = excercise.Id }, excercise);
         }
 
-        // DELETE: api/Patients/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
+        // DELETE: api/Excercises/5
+        [ResponseType(typeof(Excercise))]
+        public IHttpActionResult DeleteExcercise(int id)
         {
-            User user = _ctx.Users.Find(id);
-            if (user == null)
+            Excercise excercise = _ctx.Excercises.Find(id);
+            if (excercise == null)
             {
                 return NotFound();
             }
 
-            _ctx.Users.Remove(user);
+            _ctx.Excercises.Remove(excercise);
             _ctx.SaveChanges();
 
-            return Ok(user);
+            return Ok(excercise);
         }
 
         protected override void Dispose(bool disposing)
@@ -118,9 +119,9 @@ namespace PTWebApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UserExists(int id)
+        private bool ExcerciseExists(int id)
         {
-            return _ctx.Users.Count(e => e.Id == id) > 0;
+            return _ctx.Excercises.Count(e => e.Id == id) > 0;
         }
     }
 }

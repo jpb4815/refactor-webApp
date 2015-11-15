@@ -4,9 +4,11 @@
 
     angular.module('app').directive('ptaResults', [function () {
         return {
+            transclude: true,
             scope: {
             },
-            templateUrl: "app/results/viewResultsTemplate.html"
+            templateUrl: "app/results/viewResultsTemplate.html",
+           
         }
     }]);
 })

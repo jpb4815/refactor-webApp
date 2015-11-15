@@ -16,8 +16,9 @@ namespace DataAccess.Repositories
         IQueryable<User> GetUsers();
         IQueryable<User> GetUserById(int userId);
         IQueryable<ExcerciseDictionary> GetExcerciseDictionaryResults();
+        IQueryable<ExcerciseDictionary> GetExcerciseDictionaryEntryById(int edId);
         IQueryable<InjuryDictionary> GetInjuryDictionaryResults();
-
+        IQueryable<InjuryDictionary> GetInjuryById(int injuryId);
 
     }
 }

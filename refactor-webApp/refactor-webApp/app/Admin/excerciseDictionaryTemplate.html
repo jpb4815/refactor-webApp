@@ -1,0 +1,63 @@
+﻿<div class="panel panel-primary" ng-controller="excerciseDictionaryController as vm">
+    <div class="panel panel-heading">
+        <h2>Excercise Dictionary</h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <div>
+                    <input type="text" id="searchField" name="searchField" ng-model="searchField" />
+                    <button class="btn btn-primary" ng-click="vm.Search(searchField)">Search</button>
+                </div>
+                <div class="progress progress-striped active" ng-show="isBusy">
+                    <div class="bar" style="width: 100%"></div>
+                </div>
+                <tr>
+                    <td class="col-sm-2">Excercise ID</td>
+                    <td class="col-sm-2">Description</td>
+                    <td class="col-sm-6">Picture</td>
+                    <td class="col-sm-2">Metrics</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="excercise in vm.excerciseDictionaries">
+                    <td>{{excercise.id}}</td>
+                    <td>{{excercise.description}}</td>
+                    <td>{{excercise.picture}}</td>
+                    <td>{{excercise.metrics}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="btn-group">
+        <button class="btn" ng-click="vm.addExcercise()">Add Injury</button>
+    </div>
+    <div ng-show="vm.isAddExe">
+        <div class="panel panel-primary">
+            <div class="panel panel-header">
+                <h2 class="page-title">Excercise Dictionary</h2>
+            </div>
+            <form role="form" name="excerciseDictionaryForm" class="form-horizontal" novalidate ng-submit="vm.save()">
+                <div>
+                    <label for="description" class="col-sm-3 control-label">Description</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="description" placeholder="Description" class="form-control" ng-model="vm.newExcercise.description" required />
+                    </div>
+                    <label for="picture" class="col-sm-3 control-label">Picture</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="picture" placeholder="picture" class="form-control" ng-model="vm.newExcercise.picture" required />
+                    </div>
+                    <label for="metrics" class="col-sm-3 control-label">Metrics</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="metrics" placeholder="metrics" class="form-control" ng-model="vm.newExcercise.metrics" required />
+                    </div>
+                    <div>
+                        <input type="submit" class="btn" value="Save" ng-disabled="excerciseDictionaryForm.$invalid" />
+                    </div>
+                </div>
+            </form>
+           
+        </div>     
+    </div>
+</div>
+

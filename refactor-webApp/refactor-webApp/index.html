@@ -19,15 +19,17 @@
 
     <!--External Library scripts-->
     <script src="Scripts/jquery-2.1.3.min.js"></script>
-    <script src="Scripts/angular.min.js"></script>
+    <script src="scripts/angular.js"></script>
     <script src="Scripts/angular-animate.min.js"></script>
     <script src="scripts/angular-route.min.js"></script>
     <script src="scripts/angular-resource.js"></script>
+    <script src="scripts/angular-mocks.js"></script>
     <script src="Scripts/angular-gridster-master/dist/angular-gridster.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
     <script src="Scripts/ngStorage-master/ngStorage.min.js"></script>
 
+   
     <!--Modules and App/config-->
     <script src="ext-modules/ptMenu/ptMenuModule.js"></script>
     <script src="ext-modules/ptMenu/ptMenuController.js"></script>
@@ -42,22 +44,35 @@
     <script src="ext-modules/ptFramework/ptFrameworkModule.js"></script>
     <script src="ext-modules/ptFramework/ptFrameworkController.js"></script>
     <script src="ext-modules/ptFramework/ptFrameworkDirective.js"></script>
- 
 
     <script src="app/appModule.js"></script>
     <script src="app/appConfig.js"></script>
     <script src="app/appRouteConfig.js"></script>
-    <script src="app/appContoller.js"></script>
+    <!--<script src="app/appContoller.js"></script>-->
+    <script src="app/common.services/commonServices.js"></script>
+
+
     <!--Widget scripts-->
     <script src="app/widgets/ptaPatient/ptaPatientDirective.js"></script>
     <script src="app/widgets/ptaProgram/ptaProgramDirective.js"></script>
     <script src="app/widgets/ptaProvider/ptaProviderDirective.js"></script>
     <!--Services-->
     <script src="app/services/DataService.js"></script>
-    <script src="app/services/DataService1.js"></script>
-    <!--<script src="app/services/app-spinner.service.js"></script>
-    <script src="app/services/modalDialogsService.js"></script>
-    <script src="app/services/ptaAPI.js"></script>-->
+    <script src="app/common.services/ptaResources.js"></script>
+    <script src="app/common.services/userAccount.js"></script>
+    <!--<script src="app/services/userService.js"></script>-->
+
+    <!--directives-->
+    <script src="app/directives/ptaDashboardDirective.js"></script>
+    <script src="app/directives/ptaEnterResultsDirective.js"></script>
+    <script src="app/directives/ptaPatientListDirective.js"></script>
+    <script src="app/directives/ptaProgramEntryDirective.js"></script>
+    <script src="app/directives/ptaProvidersDirective.js"></script>
+    <script src="app/directives/ptaResultsDirective.js"></script>
+    <script src="app/directives/ptaTherapistDirective.js"></script>
+    <script src="app/directives/ptaViewResultsDirective.js"></script>
+    <script src="app/directives/patientCardDirective.js"></script>
+
     <!--controllers-->
     <script src="app/dialogs/ptaSelectPatientController.js"></script>
     <script src="app/dialogs/ptaSelectProgramController.js"></script>
@@ -68,65 +83,50 @@
     <script src="app/provider/providerController.js"></script>
     <script src="app/results/resultsController.js"></script>
     <script src="app/therapist/therapistController.js"></script>
+    <script src="app/Admin/userEntryController.js"></script>
+    <script src="app/loginController.js"></script>
+    <script src="app/Admin/injuryDictionaryController.js"></script>
+    <script src="app/Admin/excerciseDictionaryController.js"></script>
 
-    <!--directives-->
-    <script src="app/directives/ptaDashboardDirective.js"></script>
-    <script src="app/directives/ptaEnterResultsDirective.js"></script>
-    <script src="app/directives/ptaExcerciseDictionaryDirective.js"></script>
-    <script src="app/directives/ptaExcerciseDirective.js"></script>
-    <script src="app/directives/ptaInjuryDictionaryDirective.js"></script>
-    <script src="app/directives/ptaPatientListDirective.js"></script>
-    <script src="app/directives/ptaProgramEntryDirective.js"></script>
-    <script src="app/directives/ptaProvidersDirective.js"></script>
-    <script src="app/directives/ptaResultsDirective.js"></script>
-    <script src="app/directives/ptaTherapistDirective.js"></script>
-    <script src="app/directives/ptaViewResultsDirective.js"></script>
-
+    
 </head>
-<body class="container-fluid" ng-contoller="appController">
-    <div ng-switch="state">
-        <div ng-switch-when="x unauthorized" class="sign-in-form">
-            <h2>Physical Therapy Admin App</h2>
-            <h4>Sign In</h4>
-            <form>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="text" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control"/>
-                </div>
-            </form>
-            <button class="btn btn-default" ng-click="signIn()">Sign In</button>
-        </div>
-
-       <div ng-switch-default>
-            <pt-framework title="Physical Therapy Tracker"
-                          subtitle="Adminstrative Application"
-                          icon-file="images/LG0737.jpg">
-                <pt-menu>
-                    <pt-menu-item label="Dasboard" icon="fa-tachometer" route="dashboard"></pt-menu-item>
-                    <pt-menu-group label="Patients" icon="fa-users">
-                        <pt-menu-item label="Patients" icon="fa-users" route="patientlist"></pt-menu-item>
-                        <pt-menu-item label="Enter Results" icon="fa-area-chart" route="enterresults"></pt-menu-item>
-                        <pt-menu-item label="View Results" icon="fa-area-chart" route="viewresults"></pt-menu-item>
-                    </pt-menu-group>
-                    <pt-menu-group label="Providers" icon="fa-user-md">
-                        <pt-menu-item label="Providers" icon="fa-user-md" route="provider"></pt-menu-item>
-                        <pt-menu-item label="Injury Dict." icon="fa-book" route="injurydictionary"></pt-menu-item>
-                        <pt-menu-item label="Excercise Dict." icon="fa-book" route="excercisedictionary"></pt-menu-item>
-                    </pt-menu-group>
-                    <pt-menu-group label="Therapist" icon="fa-user-md">
-                        <pt-menu-item label="Therapist" icon="fa-user-md" route="therapist"></pt-menu-item>
-                        <pt-menu-item label="Program Entry" icon="fa-user-md" route="programentry"></pt-menu-item>
-                        <pt-menu-item label="Results" icon="fa-area-chart" route="results"></pt-menu-item>
-                        <pt-menu-item label="Excercises" icon="fa-bicycle" route="excercise"></pt-menu-item>
-                    </pt-menu-group>
-                </pt-menu>
-            </pt-framework>
-        </div>
+<body class="container-fluid">
+<!--<div class="container-fluid" ng-controller="loginController as vm">
+    <div class="navbar-header">
+        <div class="navbar-brand">Physical Therapy Progress Tracker</div>
+        <form nghide="vm.isLoggedIn" class="navbar-form navbar-right">
+            <div class="form-group">
+                <input type="text" placeholder="username (email)" ng-model="vm.userData.email" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="password" ng-model="vm.userData.password" class="form-control"/>
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="vm.login()">Login</button>
+            <button type="submit" class="btn btn-default" ng-click="vm.registerUser()">Register</button>
+            <div ng-show="vm.message">{{vm.message}}</div>
+        </form>
     </div>
+</div>-->
+    <pt-framework title="Physical Therapy Tracker"
+                  subtitle="Adminstrative Application"
+                  icon-file="images/LG0737.jpg">
+        <pt-menu>
+            <pt-menu-item label="Dasboard" icon="fa-tachometer" route="dashboard"></pt-menu-item>
+            <pt-menu-group label="Providers" icon="fa-user-md">
+                <pt-menu-item label="Providers" icon="fa-user-md" route="provider"></pt-menu-item>
+                <pt-menu-item label="Patients" icon="fa-users" route="patientlist"></pt-menu-item>
+            </pt-menu-group>
+            <pt-menu-group label="Therapist" icon="fa-user-md">
+                <pt-menu-item label="Therapist" icon="fa-user-md" route="therapist"></pt-menu-item>
+                <pt-menu-item label="Excercises" icon="fa-bicycle" route="excercise"></pt-menu-item>
+            </pt-menu-group>
+            <pt-menu-group label="Administrator" icon="fa-tachometer">
+                <pt-menu-item label="User Entry Form" icon="fa-book" route="userentry"></pt-menu-item>
+                <pt-menu-item label="Injury Dict." icon="fa-book" route="injurydictionary"></pt-menu-item>
+                <pt-menu-item label="Excercise Dict." icon="fa-book" route="excercisedictionary"></pt-menu-item>
+            </pt-menu-group>
+        </pt-menu>
+    </pt-framework>
 </body>
 </html>
 

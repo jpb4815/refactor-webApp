@@ -4,6 +4,39 @@
     ['$timeout',
     function ($timeout) {
 
+        var excercises = [
+           {
+               excerciseId: "1",
+               excerciseName: "Straight Leg Lift",
+               description: "Lying on back lift leg in locked position.",
+               repetitions: " 40"
+           },
+           {
+               excerciseId: "2",
+               excerciseName: "Side Leg Lift",
+               description: "Lying on side lift leg in locked position.",
+               repetitions: " 40"
+           },
+           {
+               excerciseId: "3",
+               excerciseName: "Quad Fire",
+               description: "Seated with leg straight, tighten your quad and hold.",
+               epetitions: " 40"
+           },
+           {
+               excerciseId: "4",
+               excerciseName: "Pateller mobilization",
+               description: "Seated with leg straight, move patella.",
+               repetitions: " 40"
+           },
+           {
+               excerciseId: "5",
+               excerciseName: "Standing Leg Lift",
+               description: "From standing position lift leg leg.",
+               repetitions: " 40"
+           }
+        ];
+       
         var programs = [
             {
                 id: 1000,
@@ -59,7 +92,7 @@
                 duration: '18 weeks',
                 excercises: 20,
                 therapist: 1,
-                image: 'RURehab.jpb'
+                image: 'RURehab.jpg'
             },
             {
                 id: 1007,
@@ -76,31 +109,31 @@
                 id: 5000,
                 name: 'Andy Chatterton',
                 location: 'Clinic A',
-                image: 'doctor.jpg'
+                image: 'doctor-1.jpg'
             },
             {
                 id: 5001,
                 name: 'April Donaldson',
                 location: 'Clinic A',
-                image: 'doctor.jpg'
+                image: 'doctor-7.jpg'
             },
             {
                 id: 5002,
                 name: 'Don Morgan',
                 location: 'Clinic B',
-                image: 'doctor.jpg'
+                image: 'doctor-2.jpg'
             },
             {
                 id: 5003,
                 name: 'Tom Sullivan',
                 location: 'Clinic C',
-                image: 'doctor.jpg'
+                image: 'doctor-4.jpg'
             },
             {
                 id: 5004,
                 name: 'Kathy Fletcher',
                 location: 'Clinic C',
-                image: 'doctor.jpg'
+                image: 'doctor-3.jpg'
             }
         ];
 
@@ -179,8 +212,6 @@
 
         var getProgram = function (id) {
             var timeout = $timeout(function () {
-                //$timeout.cancel(timeout);
-                //return undefined;
                 for (var i = 0; i < programs.length; i++)
                     if (programs[i].id == id)
                         return programs[i];
@@ -211,8 +242,8 @@
             },500);
         }
 
-        var getPatient = function() {
-            return $timeout(function(id) {
+        var getPatient = function (id) {
+            return $timeout(function() {
                 for (var i = 0; i < patients.length; i++)
                     if (patients[i].id == id)
                         return patients[i];

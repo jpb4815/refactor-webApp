@@ -19,32 +19,32 @@ namespace DataAccess.Repositories
 
         public IQueryable<Excercise> GetExcercises()
         {
-            throw new NotImplementedException();
+            return _ctx.Excercises;
         }
 
         public IQueryable<Excercise> GetExcerciseById(int excerciseId)
         {
-            throw new NotImplementedException();
+            return _ctx.Excercises.Where(e => e.Id == excerciseId);
         }
 
         public IQueryable<Program> GetPrograms()
         {
-            throw new NotImplementedException();
+            return _ctx.Programs;
         }
 
         public IQueryable<Program> GetProgramById(int programId)
         {
-            throw new NotImplementedException();
+            return _ctx.Programs.Where(p => p.Id == programId);
         }
 
         public IQueryable<Results> GetResults()
         {
-            throw new NotImplementedException();
+            return _ctx.Results;
         }
 
         public IQueryable<Results> GetResultsById(int resultId)
         {
-            throw new NotImplementedException();
+            return _ctx.Results.Where(r => r.Id == resultId);
         }
 
 
@@ -55,17 +55,27 @@ namespace DataAccess.Repositories
 
         public IQueryable<User> GetUserById(int userId)
         {
-            throw new NotImplementedException();
+            return _ctx.Users.Where(u => u.Id == userId);
         }
 
         public IQueryable<ExcerciseDictionary> GetExcerciseDictionaryResults()
         {
-            throw new NotImplementedException();
+            return _ctx.ExcerciseDictionaries;
         }
+
+        public IQueryable<ExcerciseDictionary> GetExcerciseDictionaryEntryById(int edId)
+        {
+            return _ctx.ExcerciseDictionaries.Where(e => e.Id == edId);
+        } 
 
         public IQueryable<InjuryDictionary> GetInjuryDictionaryResults()
         {
-            throw new NotImplementedException();
+            return _ctx.InjuryDictionaries;
         }
+
+        public IQueryable<InjuryDictionary> GetInjuryById(int injuryId)
+        {
+            return _ctx.InjuryDictionaries.Where(i => i.Id == injuryId);
+        } 
     }
 }

@@ -7,11 +7,11 @@
         function ($scope, dataService) {
             $scope.isLoaded = false;
             dataService.getPrograms().then(function (data) {
-                $scope.providers = true;
+                $scope.programs = data;
                 $scope.isLoaded = true;
 
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].d === $scope.item.widgetSettings.id)
+                    if (data[i].id === $scope.item.widgetSettings.id)
                         $scope.selectedProgram = data[i];
                 }
             });
