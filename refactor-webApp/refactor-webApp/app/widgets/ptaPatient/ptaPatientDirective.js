@@ -7,11 +7,25 @@
         return {
             templateUrl: 'app/widgets/ptaPatient/ptaPatientTemplate.html',
             link: function (scope, el, attrs) {
+                scope.isLoaded = false;
+                scope.hasError = false;
                 scope.selectedPatient = null;
-                dataService.getPatient(scope.item.widgetSettings.id)
-                    .then(function (data) {
-                        scope.selectedPatient = data;
-                    });
+
+                scope.loadPatient = function () {
+                    scope.hasError = false;
+                    dataService.getPatient(scope.item.widgetSettings.id)
+                        .then(function(data) {
+                                //success
+                                scope.selectedPatient = data;
+                                scope.isLoaded = true;
+                                scope.hasError = false;
+                            },
+                            function(data) {
+                                //error
+                                scope.hasError = true;
+                            });
+                };
+                scope.loadPatient();
             }
         };
     }]);

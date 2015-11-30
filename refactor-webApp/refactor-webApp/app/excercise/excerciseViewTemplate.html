@@ -7,11 +7,9 @@
             <table class="table table-bordered table-hover table-striped">
                 <thead>
                 <div>
-                    <input type="text" id="searchField" name="searchField" ng-model="searchField"/>
-                    <button class="btn btn-primary" ng-click="vm.Search(searchField)">Search</button>
-                </div>
-                <div class="progress progress-striped active" ng-show="isBusy">
-                    <div class="bar" style="width: 100%"></div>
+                    <input type="text" id="searchField" name="searchField" ng-model="vm.searchText"/>
+                    <button class="btn btn-success" ng-click="vm.search(vm.searchText)">Search</button>
+                    <button class="btn btn-danger" ng-click="vm.clear()">Clear</button>
                 </div>
                 <tr>
                     <td class="col-sm-2">Excercise ID</td>
@@ -21,7 +19,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="excercise in vm.excercises.excercises">
+                <tr ng-click="vm.openWindow(excercise)" ng-repeat="excercise in vm.excercises track by excercise.id">
                     <td>{{excercise.id}}</td>
                     <td>{{excercise.name}}</td>
                     <td>{{excercise.description}}</td>
@@ -37,7 +35,7 @@
     <div class="panel panel-primary" ng-show="vm.isAddExe">
         <div class="panel-header">
             <h2>Add Excercise</h2>
-            <form role="form" name="newExcerciseForm" class="form-horizontal" novalidate ng-submit="vm.save()">
+            <form role="form" name="newExcerciseForm" class="form-horizontal" novalidate ng-submit="vm.saveNewExcercise()">
                 <div>
                     <label for="name" class="col-sm-3 control-label">Name</label>
                     <div class="col-sm-9">

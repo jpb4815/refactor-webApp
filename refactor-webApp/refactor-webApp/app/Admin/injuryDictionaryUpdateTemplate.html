@@ -1,0 +1,43 @@
+﻿<div ng-controller="injuryDictionaryController as vm">
+    <div class="panel panel-primary">
+        <div class="panel panel-header">
+            <h1>Update Injury Dictionary</h1>
+            <button ng-click="vm.goBackToView()" type="button" class="btn btn-primary">Back</button>
+            <div class="panel-body">
+                <form role="form" name="injuryDictionaryUpdateForm" class="form-horizontal" novalidate>
+                    <fieldset>
+                        <legend>Injury Dictionary Update</legend>
+                        <div>
+                            <label for="injury" class="col-sm-3 control-label">Injury Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="injury" placeholder="Injury Name" class="form-control" ng-model="vm.injury.injury" />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="icdCode" class="col-sm-3 control-label">ICD Code</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="icdCode" placeholder="ICD Code" class="form-control" ng-model="vm.injury.icdCode" />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="description" class="col-sm-3 control-label">Description</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="description" placeholder="Description" class="form-control" ng-model="vm.injury.description" />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <input ng-disabled="vm.saving" type="submit" ng-click="vm.save()" class="btn btn-primary" value="Submit" ng-disabled="injuryDictionaryUpdateForm.$invalid" />
+                    <button class="btn btn-danger" ng-click="vm.delete()">Delete Injury</button>
+                </form>
+                <div ng-show="vm.errorMessage" class="alert alert-danger">
+                    {{vm.errorMessage}}
+                </div>
+
+                <div ng-show="vm.successMessage" class="alert alert-success">
+                    {{vm.successMessage}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

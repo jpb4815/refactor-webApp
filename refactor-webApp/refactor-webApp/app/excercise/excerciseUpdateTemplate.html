@@ -1,0 +1,42 @@
+﻿<div ng-controller=" excerciseController as vm">
+    <div class="panel panel-primary">
+        <div class="panel panel-header">
+            <h1>Update Excercise</h1>
+            <button ng-click="vm.goBackToView()" type="button" class="btn btn-primary">Back</button>
+            <div class="panel-body">
+                <form role="form" name="updateExcerciseForm" class="form-horizontal" novalidate ng-submit="vm.saveUpdatedExcercise()">
+                    <fieldset>
+                        <legend>Excercise Detail</legend>
+                        <div>
+                            <label for="name" class="col-sm-3 control-label">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="name" placeholder="Name" class="form-control" ng-model="vm.excercise.name" />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="description" class="col-sm-3 control-label">Description</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="description" placeholder="Description" class="form-control" ng-model="vm.excercise.description" />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="reps" class="col-sm-3 control-label">Repetitions</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="reps" placeholder="Repetitions" class="form-control" ng-model="vm.excercise.repetitions" />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <input ng-disabled="vm.saving" type="submit" class="btn btn-primary" value="Submit" ng-disabled="updateExcerciseForm.$invalid" />
+                    <button class="btn btn-danger" ng-click="vm.deleteExcercise()">Delete Excercise</button>
+                </form>
+                <div ng-show="vm.errorMessage" class="alert alert-danger">
+                    {{vm.errorMessage}}
+                </div>
+
+                <div ng-show="vm.successMessage" class="alert alert-success">
+                    {{vm.successMessage}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

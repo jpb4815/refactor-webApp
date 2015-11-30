@@ -16,21 +16,21 @@
                 }
             },
             {
+                url: '/patientlist/:id',
+                config: {
+                    templateUrl: 'app/patient/patientUpdateTemplate.html'
+                }
+            },
+            {
                 url: '/provider',
                 config: {
                     templateUrl: "app/provider/providerViewTemplate.html"
                 }
             },
             {
-                url: '/enterresults',
+                url: '/provider/:id',
                 config: {
-                    templateUrl: "app/patient/enterResultsTemplate.html"
-                }
-            },
-            {
-                url: '/viewresults',
-                config: {
-                    templateUrl: "app/results/viewResultsTemplate.html"
+                    templateUrl: "app/provider/providerUpdateTemplate.html"
                 }
             },
             {
@@ -40,9 +40,21 @@
                 }
             },
             {
+                url: '/injurydictionary/:id',
+                config: {
+                    templateUrl: "app/Admin/injuryDictionaryUpdateTemplate.html"
+                }
+            },
+            {
                 url: '/excercisedictionary',
                 config: {
                     templateUrl: "app/Admin/excerciseDictionaryTemplate.html"
+                }
+            },
+            {
+                url: '/excercisedictionary/:id',
+                config: {
+                    templateUrl: "app/Admin/excerciseDictionaryUpdateTemplate.html"
                 }
             },
             {
@@ -52,15 +64,9 @@
                 }
             },
             {
-                url: '/programentry',
+                url: '/therapist/:id',
                 config: {
-                    templateUrl: "app/therapist/programEntryTemplate.html"
-                    }
-            },
-            {
-                url: '/results',
-                config: {
-                    templateUrl: "app/patient/enterResultsTemplate.html"
+                    templateUrl: "app/therapist/therapistUpdateTemplate.html"
                 }
             },
             {
@@ -71,9 +77,22 @@
                 }
             },
             {
+                url: '/excercise/:id',
+                config: {
+                    templateUrl: "app/excercise/excerciseUpdateTemplate.html"
+
+                }
+            },
+            {
                 url: '/userentry',
                 config: {
                     templateUrl:"app/Admin/userEntryForm.html"
+                }
+            },
+            {
+                url: '/register',
+                config: {
+                    templateUrl: "app/login/registerTemplate.html"
                 }
             }
         ];

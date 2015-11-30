@@ -6,25 +6,30 @@
         <div class="panel-body">
             <table class="table table-bordered table-hover table-striped">
                 <thead>
-                    <tr>
-                        <td class="col-sm-3">Provider ID</td>
-                        <td class="col-sm-3">Provider Name</td>
-                        <td class="col-sm-3">Provider Location</td>
-                        <td class="col-sm-3">Dea Number</td>
-                    </tr>
+                    <div>
+                        <input type="text" id="searchField" name="searchField" ng-model="vm.searchText" />
+                        <button class="btn btn-success" ng-click="vm.search(vm.searchText)">Search</button>
+                        <button class="btn btn-danger" ng-click="vm.clear()">Clear</button>
+                    </div>
+                <tr>
+                    <td class="col-sm-3">Provider ID</td>
+                    <td class="col-sm-3">Provider Name</td>
+                    <td class="col-sm-3">Provider Location</td>
+                    <td class="col-sm-3">Dea Number</td>
+                </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="provider in vm.providers">
+                    <tr ng-click="vm.openWindow(provider)" ng-repeat="provider in vm.providers track by provider.id">
                         <td>{{provider.id}}</td>
-                        <td>{{provider.firstName + " " + provider.lastName}}</td>
-                        <td>{{provider.location}}</td>
-                        <td>{{provider.deaNumber}}</td>
+                            <td>{{provider.firstName + " " + provider.lastName}}</td>
+                            <td>{{provider.location}}</td>
+                            <td>{{provider.deaNumber}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="btn-group">
-            <button class="btn" ng-click="vm.addProvider()">Add Provider</button>
+            <button class="btn btn-primary" ng-click="vm.addProvider()">Add Provider</button>
         </div>
     </div>
 </div>

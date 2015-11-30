@@ -26,8 +26,17 @@ namespace PTWebApp.Controllers
         }
 
         // GET: api/Excercises
-        public IEnumerable<Excercise> GetExcercises()
+        public IEnumerable<Excercise> GetExcercises(string query = null)
         {
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                return
+                    _ctx.Excercises.Where(
+                        x =>
+                            x.Id.ToString().Contains(query) || x.Description.Contains(query) ||
+                            x.InjuryType.Contains(query) || x.Name.Contains(query) ||
+                            x.Repetitions.ToString().Contains(query));
+            }
             return _ctx.Excercises;
         }
 
@@ -81,17 +90,17 @@ namespace PTWebApp.Controllers
 
         // POST: api/Excercises
         [ResponseType(typeof(Excercise))]
-        public IHttpActionResult PostExcercise(Excercise excercise)
+        public IHttpActionResult PostExcercise(Excercise newExcercise)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _ctx.Excercises.Add(excercise);
+            _ctx.Excercises.Add(newExcercise);
             _ctx.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = excercise.Id }, excercise);
+            return CreatedAtRoute("DefaultApi", new { id = newExcercise.Id }, newExcercise);
         }
 
         // DELETE: api/Excercises/5

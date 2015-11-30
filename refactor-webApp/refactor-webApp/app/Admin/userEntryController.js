@@ -1,36 +1,46 @@
 ﻿(function() {
     "use strict";
 
-    angular.module('app').controller("userEntryController", ["$http", userEntryController]);
+    angular.module('app').controller("userEntryController", ["$http","$timeout", userEntryController]);
 
-    function userEntryController($http) {
+    function userEntryController($http, $timeout) {
         var vm = this;
-
+        vm.roles = [
+            { id: 1, name: "Admin" },
+            { id: 2, name: "Doctor" },
+            { id: 3, name: "Therapist" },
+            { id: 4, name: "Patient" }
+        ];
         vm.user = {
-            userName: "jpb4815",
-            userRole: "Patient",
-            firstName: "John",
-            lastName: "Brown",
-            addressLine1: "40 Pinehurst Dr",
-            addressLine2: "",
-            city: "Jericho",
-            county: "Chittenden",
-            state: "VT",
-            zipCode: "05465",
-            country: "USA",
-            telephone: "802-867-5309",
-            telephone2: "",
-            ssn: "000-87-1234",
-            injuryType: "Acl tear",
-            location: "",
-            deaNumber: ""
+            //Remove if you don't want a default value selected
+            useRole: vm.roles[0].id
+        };
+        vm.newUser = {
+            //Remove if you don't want a default value selected
+            useRole: vm.roles[0].id
+        };
+        vm.saving = true;
+        vm.successMessage = null;
+        vm.errorMessage = null;
+
+        vm.saveUser = function () {
+            $http.post("http://localhost:55928/api/Users/", vm.user)
+                .then(function() {
+                    //success
+                    vm.saving = false;
+                    vm.successMessage = "User has been updated ....";
+                        $timeout(function() {
+                            vm.saving = false;
+                            vm.successMessage = null;
+                            vm.user = {};
+                        }, 1500);
+                    },
+                    function() {
+                        //error
+                        vm.errorMessage = "Failed to save User ...";
+                    });
         }
 
-        vm.user.Roles = [
-            {id:1, name:"Admin"},
-            {id:2, name:"Doctor"},
-            {id: 3, name: "Therapist"},
-            {id:4, name: "Patient"}  
-        ];
+        
     }
 })();

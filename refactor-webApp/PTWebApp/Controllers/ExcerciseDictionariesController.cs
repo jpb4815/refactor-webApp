@@ -26,8 +26,17 @@ namespace PTWebApp.Controllers
         }
 
         // GET: api/ExcerciseDictionaries
-        public IQueryable<ExcerciseDictionary> GetExcerciseDictionaries()
+        public IQueryable<ExcerciseDictionary> GetExcerciseDictionaries(string query = null)
         {
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                return
+                    _ctx.ExcerciseDictionaries.Where(
+                        x =>
+                            x.Id.ToString().Contains(query) 
+                            || x.Description.Contains(query) 
+                            ||x.Metrics.Contains(query));
+            }
             return _ctx.ExcerciseDictionaries;
         }
 

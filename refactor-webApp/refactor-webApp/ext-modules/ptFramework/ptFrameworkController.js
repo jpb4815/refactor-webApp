@@ -11,7 +11,10 @@
 
             $scope.$on('pt-menu-item-selected-event', function (evt, data) {
                 $scope.routeString = data.route;
+
                 $location.path(data.route);
+                //lets go ahead and remove the history item
+                $location.replace();
                 checkWidth();
                 broadcastMenuState();
             });

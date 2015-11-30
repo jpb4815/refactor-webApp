@@ -1,0 +1,109 @@
+﻿<div ng-controller="therapistController as vm">
+    <div class="panel panel-primary">
+        <div class="panel panel-header">
+           <h1>Therapist Update</h1>
+            <button ng-click="vm.goBackToView();" type="button" class="btn btn-primary">Back</button>
+            <div class="panel-body">
+                <form role="form" name="therapistUpdateForm" class="form-horizontal" novalidate ng-submit="vm.save()">
+                    <fieldset>
+                        <legend>Core</legend>
+                        <div>
+                            <label for="userName" class="col-sm-3 control-label">User Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="userName" placeholder="user name" class="form-control" ng-model="vm.therapist.userName"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="firstName" placeholder="first name" class="form-control" ng-model="vm.therapist.firstName"/>
+                            </div>
+                            <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="lastName" placeholder="last name" class="form-control" ng-model="vm.therapist.lastName"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Address</legend>
+                        <div>
+                            <label for="addressLine1" class="col-sm-3 control-label">Address Line 1</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="addressLine1" placeholder="address line 1" class="form-control" ng-model="vm.therapist.addressLine1"/>
+                            </div>
+                            <label for="addressLine2" class="col-sm-3 control-label">Address Line 2</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="addressLine2" placeholder="address line 2" class="form-control" ng-model="vm.therapist.addressLine2"/>
+                            </div>
+                            <label for="city" class="col-sm-3 control-label">City</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="city" placeholder="city" class="form-control" ng-model="vm.therapist.city"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="county" class="col-sm-3 control-label">County</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="county" placeholder="county" class="form-control" ng-model="vm.therapist.county"/>
+                            </div>
+                            <label for="state" class="col-sm-3 control-label">State</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="state" placeholder="state" class="form-control" ng-model="vm.therapist.state"/>
+                            </div>
+                            <label for="zipCode" class="col-sm-3 control-label">Zip Code</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="zipCode" placeholder="zip code" class="form-control" ng-model="vm.therapist.zipCode"/>
+                            </div>
+                            <label for="country" class="col-sm-3 control-label">Country</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="country" placeholder="country" class="form-control" ng-model="vm.therapist.country"/>
+                            </div>
+                            <label for="telephone" class="col-sm-3 control-label">Telephone</label>
+                            <div class="col-sm-9">
+                                <input type="tel" id="telephone" placeholder="telephone" class="form-control" ng-model="vm.therapist.telephone"/>
+                            </div>
+                            <label for="telephone1" class="col-sm-3 control-label">Telephone 2</label>
+                            <div class="col-sm-9">
+                                <input type="tel" id="telephone1" placeholder="telephone 2" class="form-control" ng-model="vm.therapist.telephone2"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>User Role</legend>
+                        <div>
+                            <div class="radio col-md-offset-3">
+                                <label style="padding-right: 10px;"><input type="radio" style="padding-right: 10px;" name="admin" value="1" ng-model="vm.therapist.userRole"/>Admin</label>
+                                <label style="padding-right: 10px;"><input type="radio" style="padding-right: 10px;" name="doctor" value="2" ng-model="vm.therapist.userRole"/>Doctor</label>
+                                <label style="padding-right: 10px;"><input type="radio" style="padding-right: 10px;" name="therapist" value="3" ng-model="vm.therapist.userRole"/>Therapist</label>
+                                <label style="padding-right: 10px;"><input type="radio" style="padding-right: 10px;" name="patient" value="4" ng-model="vm.therapist.userRole"/>Patient</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Provider Information</legend>
+                        <div>
+                            <label for="location" class="col-sm-3 control-label">Location</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="location" placeholder="location" class="form-control" ng-model="vm.therapist.location"/>
+                            </div>
+                            <label for="deaNumber" class="col-sm-3 control-label">DEA Number</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="deaNumber" placeholder="DEA Number" class="form-control" ng-model="vm.therapist.deaNumber"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <input ng-disabled="vm.saving" type="submit" class="btn btn-primary" value="Submit" ng-disabled="therapistUpdateForm.$invalid"/>
+                    <button class="btn btn-danger" ng-click="vm.deleteTherapist()">Delete Therapist</button>
+                </form>
+                <div ng-show="vm.errorMessage" class="alert alert-danger">
+                    {{vm.errorMessage}}
+                </div>
+
+                <div ng-show="vm.successMessage" class="alert alert-success">
+                    {{vm.successMessage}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

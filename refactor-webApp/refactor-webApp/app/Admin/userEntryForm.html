@@ -2,25 +2,42 @@
     <div class="row">
         <div class="panel panel-header">
             <h1>User Entry Form</h1>    
-        </div>        
-        <form role="form" name="userEntryForm" class="form-horizontal" novalidate ng-submit="vm.save()">
+        </div>
+        <form role="form" name="userEntryForm" class="form-horizontal" ng-submit="vm.saveUser()">
             <fieldset>
                 <legend>Core</legend>
                 <div>
                     <label for="userName" class="col-sm-3 control-label">User Name</label>
                     <div class="col-sm-9">
-                        <input type="text" id="userName" placeholder="user name" class="form-control" ng-model="vm.user.userName"/>
+                        <input type="text" id="userName" name="userName" placeholder="user name" class="form-control"
+                               ng-model="vm.user.userName" ng-minlength="3" ng-maxlength="20" required/>
+                    </div>
+                    <div ng-show="userEntryForm.userName.$dirty && userEntryForm.userName.$invalid">
+                        <span ng-show="userEntryForm.userName.$error.required">Your User Name is Required</span>
+                        <span ng-show="userEntryForm.userName.$error.minlength">Your User Name must be greater than 3 characters</span>
                     </div>
                 </div>
                 <div>
                     <label for="firstName" class="col-sm-3 control-label">First Name</label>
                     <div class="col-sm-9">
-                        <input type="text" id="firstName" placeholder="first name" class="form-control" ng-model="vm.user.firstName"/>
+                        <input type="text" id="firstName" name="firstName" placeholder="first name" class="form-control"
+                               ng-model="vm.user.firstName" ng-minlength="3" ng-maxlength="20" ng-pattern="/^[a-zA-Z]+$/" required/>
                     </div>
+                    <div ng-show="userEntryForm.firstName.$dirty && userEntryForm.firstName.$invalid">
+                        <span ng-show="userEntryForm.firstName.$error.required">Your First Name is Required</span>
+                        <span ng-show="userEntryForm.firstName.$error.minlength">Your First Name must be greater than 3 characters</span>
+                    </div>
+
                     <label for="lastName" class="col-sm-3 control-label">Last Name</label>
                     <div class="col-sm-9">
-                        <input type="text" id="lastName" placeholder="last name" class="form-control" ng-model="vm.user.lastName"/>
+                        <input type="text" id="lastName" name="lastName" placeholder="last name" class="form-control" ng-model="vm.user.lastName"
+                               ng-minlength="3" ng-maxlength="20" ng-pattern="/^[a-zA-Z]+$/" required/>
                     </div>
+                    <div ng-show="userEntryForm.lastName.$dirty && userEntryForm.lastName.$invalid">
+                        <span ng-show="userEntryForm.lastName.$error.required">Your Last Name is Required</span>
+                        <span ng-show="userEntryForm.lastName.$error.minlength">Your Last Name must be greater than 3 characters</span>
+                    </div>
+
                 </div>
             </fieldset>
             <fieldset>
@@ -28,53 +45,92 @@
                 <div>
                     <label for="addressLine1" class="col-sm-3 control-label">Address Line 1</label>
                     <div class="col-sm-9">
-                        <input type="text" id="addressLine1" placeholder="address line 1" class="form-control" ng-model="vm.user.addressLine1"/>
+                        <input type="text" id="addressLine1" name="addressLine1" placeholder="address line 1" class="form-control" ng-model="vm.user.addressLine1"
+                               ng-minlength="3" ng-maxlength="30" required/>
                     </div>
+                    <div ng-show="userEntryForm.addressLine1.$dirty && userEntryForm.addressLine1.$invalid">
+                        <span ng-show="userEntryForm.addressLine1.$error.required">Your Street Address is Required</span>
+                        <span ng-show="userEntryForm.addressLine1.$error.minlength">Your Street Address must be greater than 3 characters</span>
+                    </div>
+
                     <label for="addressLine2" class="col-sm-3 control-label">Address Line 2</label>
                     <div class="col-sm-9">
-                        <input type="text" id="addressLine2" placeholder="address line 2" class="form-control" ng-model="vm.user.addressLine2"/>
+                        <input type="text" id="addressLine2" name="addressLine2" placeholder="address line 2" class="form-control" ng-model="vm.user.addressLine2"/>
                     </div>
                     <label for="city" class="col-sm-3 control-label">City</label>
                     <div class="col-sm-9">
-                        <input type="text" id="city" placeholder="city" class="form-control" ng-model="vm.user.city"/>
+                        <input type="text" id="city" name="city" placeholder="city" class="form-control" ng-model="vm.user.city"
+                               ng-minlength="3" ng-maxlength="30" required/>
                     </div>
+                    <div ng-show="userEntryForm.city.$dirty && userEntryForm.city.$invalid">
+                        <span ng-show="userEntryForm.city.$error.required">Your City is Required</span>
+                        <span ng-show="userEntryForm.city.$error.minlength">Your City Name must be greater than 3 characters</span>
+                    </div>
+
                 </div>
                 <div>
                     <label for="county" class="col-sm-3 control-label">County</label>
                     <div class="col-sm-9">
-                        <input type="text" id="county" placeholder="county" class="form-control" ng-model="vm.user.county"/>
+                        <input type="text" id="county" name="county" placeholder="county" class="form-control" ng-model="vm.user.county"
+                               ng-minlength="3" ng-maxlength="30" required/>
                     </div>
+                    <div ng-show="userEntryForm.county.$dirty && userEntryForm.county.$invalid">
+                        <span ng-show="userEntryForm.county.$error.required">Your County Name is Required</span>
+                        <span ng-show="userEntryForm.county.$error.minlength">Your County Name must be greater than 3 characters</span>
+                    </div>
+
                     <label for="state" class="col-sm-3 control-label">State</label>
                     <div class="col-sm-9">
-                        <input type="text" id="state" placeholder="state" class="form-control" ng-model="vm.user.state"/>
+                        <input type="text" id="state" name="state" placeholder="state" class="form-control" ng-model="vm.user.state"
+                               ng-minlength="2" ng-maxlength="30" required/>
                     </div>
+                    <div ng-show="userEntryForm.state.$dirty && userEntryForm.state.$invalid">
+                        <span ng-show="userEntryForm.state.$error.required">Your State Name is Required</span>
+                        <span ng-show="userEntryForm.state.$error.minlength">Your State Name must be greater than 2 characters</span>
+                    </div>
+
                     <label for="zipCode" class="col-sm-3 control-label">Zip Code</label>
                     <div class="col-sm-9">
-                        <input type="text" id="zipCode" placeholder="zip code" class="form-control" ng-model="vm.user.zipCode"/>
+                        <input type="text" id="zipCode" name="zipCode" placeholder="zip code" class="form-control" ng-model="vm.user.zipCode"
+                               ng-minlength="5" ng-maxlength="20" required/>
                     </div>
+                    <div ng-show="userEntryForm.zipCode.$dirty && userEntryForm.zipCode.$invalid">
+                        <span ng-show="userEntryForm.zipCode.$error.required">Your User Zip Code is Required</span>
+                        <span ng-show="userEntryForm.zipCode.$error.minlength">Your Zip Code must be greater than 5 characters</span>
+                    </div>
+
                     <label for="country" class="col-sm-3 control-label">Country</label>
                     <div class="col-sm-9">
-                        <input type="text" id="country" placeholder="country" class="form-control" ng-model="vm.user.country"/>
+                        <input type="text" id="country" name="country" placeholder="country" class="form-control" ng-model="vm.user.country"
+                               ng-minlength="3" ng-maxlength="20" required/>
                     </div>
+                    <div ng-show="userEntryForm.country.$dirty && userEntryForm.country.$invalid">
+                        <span ng-show="userEntryForm.country.$error.required">Your Country Name is Required</span>
+                        <span ng-show="userEntryForm.country.$error.minlength">Your Country Name must be greater than 3 characters</span>
+                    </div>
+
                     <label for="telephone" class="col-sm-3 control-label">Telephone</label>
                     <div class="col-sm-9">
-                        <input type="tel" id="telephone" placeholder="telephone" class="form-control" ng-model="vm.user.telephone"/>
+                        <input type="tel" id="telephone" name="telephone" placeholder="telephone" class="form-control" ng-model="vm.user.telephone"
+                               ng-minlength="10" ng-maxlength="21" required/>
                     </div>
+                    <div ng-show="userEntryForm.telephone.$dirty && userEntryForm.telephone.$invalid">
+                        <span ng-show="userEntryForm.telephone.$error.required">Your Telephone Number is Required</span>
+                        <span ng-show="userEntryForm.telephone.$error.minlength">Your Telephone Number must be greater than 10 characters</span>
+                    </div>
+
                     <label for="telephone1" class="col-sm-3 control-label">Telephone 2</label>
                     <div class="col-sm-9">
-                        <input type="tel" id="telephone1" placeholder="telephone 2" class="form-control" ng-model="vm.user.telephone2"/>
+                        <input type="tel" id="telephone1" name="telephone1" placeholder="telephone 2" class="form-control" ng-model="vm.user.telephone2"/>
                     </div>
                 </div>
             </fieldset>
             <fieldset>
                 <legend>User Role</legend>
                 <div>
-                    <div class="radio col-md-offset-3">
-                        <label style="padding-right: 10px;"><input type="radio" style="padding-right: 10px;" name="admin" value="1" ng-model="vm.user.userRole"/>Admin</label>
-                        <label style="padding-right: 10px;"><input type="radio" style="padding-right: 10px;" name="doctor" value="2" ng-model="vm.user.userRole"/>Doctor</label>
-                        <label style="padding-right: 10px;"><input type="radio" style="padding-right: 10px;" name="therapist" value="3" ng-model="vm.user.userRole"/>Therapist</label>
-                        <label style="padding-right: 10px;"><input type="radio" style="padding-right: 10px;" name="patient" value="4" ng-model="vm.user.userRole"/>Patient</label>
-                    </div>
+                    <select ng-model="vm.user.useRole" ng-options="role.id as role.name for role in vm.roles">
+                        <!--<option value="">--Select a Role--</option> If you don't want a default value selected-->
+                    </select>
                 </div>
             </fieldset>
             <fieldset>
@@ -82,11 +138,11 @@
                 <div>
                     <label for="ssn" class="col-sm-3 control-label">SSN</label>
                     <div class="col-sm-9">
-                        <input type="text" id="ssn" placeholder="social security number" class="form-control" ng-model="vm.user.ssn"/>
+                        <input type="text" id="ssn" name="ssn" placeholder="000-00-0000" class="form-control" ng-model="vm.user.ssn"/>
                     </div>
                     <label for="injuryType" class="col-sm-3 control-label">InjuryType</label>
                     <div class="col-sm-9">
-                        <input type="text" id="injuryType" placeholder="injury type" class="form-control" ng-model="vm.user.injuryType"/>
+                        <input type="text" id="injuryType" name="injuryType" placeholder="injury type" class="form-control" ng-model="vm.user.injuryType"/>
                     </div>
                 </div>
             </fieldset>
@@ -95,15 +151,22 @@
                 <div>
                     <label for="location" class="col-sm-3 control-label">Location</label>
                     <div class="col-sm-9">
-                        <input type="text" id="location" placeholder="location" class="form-control" ng-model="vm.user.location"/>
+                        <input type="text" id="location" name="location" placeholder="location" class="form-control" ng-model="vm.user.location"/>
                     </div>
                     <label for="deaNumber" class="col-sm-3 control-label">DEA Number</label>
                     <div class="col-sm-9">
-                        <input type="text" id="deaNumber" placeholder="DEA Number" class="form-control" ng-model="vm.user.deaNumber"/>
+                        <input type="text" id="deaNumber" name="deaNumber" placeholder="DEA Number" class="form-control" ng-model="vm.user.deaNumber"/>
                     </div>
                 </div>
             </fieldset>
-            <input type="submit" class="btn btn-primary" value="Submit" ng-disabled="userEntryForm.$invalid"/>
+            <input type="submit" class="btn btn-primary" value="Submit"/>
         </form>
+        <div ng-show="vm.errorMessage" class="alert alert-danger">
+            {{vm.errorMessage}}
+        </div>
+
+        <div ng-show="vm.successMessage" class="alert alert-success">
+            {{vm.successMessage}}
+        </div>
     </div>
 </div>

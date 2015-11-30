@@ -6,15 +6,20 @@
         <div class="panel-body">
             <table class="table table-bordered table-hover table-striped">
                 <thead>
-                    <tr>
-                        <td class="col-sm-2">Patient Name</td>
-                        <td class="col-sm-2">Patient Location</td>
-                        <td class="col-sm-2">Injury Type</td>
-                        <td class="col-sm-3">Social Security Number</td>
-                    </tr>
+                    <div>
+                        <input type="text" id="searchField" name="searchField" ng-model="vm.searchText" />
+                        <button class="btn btn-success" ng-click="vm.search(vm.searchText)">Search</button>
+                        <button class="btn btn-danger" ng-click="vm.clear()">Clear</button>
+                    </div>
+                <tr>
+                    <td class="col-sm-2">Patient Name</td>
+                    <td class="col-sm-2">Patient Location</td>
+                    <td class="col-sm-2">Injury Type</td>
+                    <td class="col-sm-3">Social Security Number</td>
+                </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="patient in vm.patients">
+                    <tr ng-click="vm.openWindow(patient)" ng-repeat="patient in vm.patients track by patient.id">
                         <td>{{patient.firstName + " " + patient.lastName}}</td>
                         <td>{{patient.city}}</td>
                         <td>{{patient.injuryType}}</td>

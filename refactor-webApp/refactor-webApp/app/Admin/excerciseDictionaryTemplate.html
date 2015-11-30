@@ -6,11 +6,9 @@
         <table class="table table-bordered table-hover table-striped">
             <thead>
                 <div>
-                    <input type="text" id="searchField" name="searchField" ng-model="searchField" />
-                    <button class="btn btn-primary" ng-click="vm.Search(searchField)">Search</button>
-                </div>
-                <div class="progress progress-striped active" ng-show="isBusy">
-                    <div class="bar" style="width: 100%"></div>
+                    <input type="text" id="searchField" name="searchField" ng-model="vm.searchText" />
+                    <button class="btn btn-success" ng-click="vm.search(vm.searchText)">Search</button>
+                    <button class="btn btn-danger" ng-click="vm.clear()">Clear</button>
                 </div>
                 <tr>
                     <td class="col-sm-2">Excercise ID</td>
@@ -20,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="excercise in vm.excerciseDictionaries">
+                <tr ng-click="vm.openWindow(excercise)" ng-repeat="excercise in vm.excerciseDictionaries track by excercise.id">
                     <td>{{excercise.id}}</td>
                     <td>{{excercise.description}}</td>
                     <td>{{excercise.picture}}</td>
@@ -32,12 +30,19 @@
     <div class="btn-group">
         <button class="btn" ng-click="vm.addExcercise()">Add Injury</button>
     </div>
+    <div ng-show="vm.errorMessage" class="alert alert-danger">
+        {{vm.errorMessage}}
+    </div>
+
+    <div ng-show="vm.successMessage" class="alert alert-success">
+        {{vm.successMessage}}
+    </div>
     <div ng-show="vm.isAddExe">
         <div class="panel panel-primary">
             <div class="panel panel-header">
                 <h2 class="page-title">Excercise Dictionary</h2>
             </div>
-            <form role="form" name="excerciseDictionaryForm" class="form-horizontal" novalidate ng-submit="vm.save()">
+            <form role="form" name="excerciseDictionaryForm" class="form-horizontal" novalidate ng-submit="vm.saveNewExcercise()">
                 <div>
                     <label for="description" class="col-sm-3 control-label">Description</label>
                     <div class="col-sm-9">

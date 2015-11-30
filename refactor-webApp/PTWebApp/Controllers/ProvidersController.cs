@@ -23,8 +23,17 @@ namespace PTWebApp.Controllers
         }
 
         // GET: api/Providers
-        public IQueryable<User> GetUsers()
+        public IQueryable<User> GetUsers(string query = null)
         {
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                return
+                    _ctx.Users.Where(
+                        x =>
+                            x.UseRole == Role.Doctor & x.Id.ToString().Contains(query)|| x.FirstName.Contains(query) 
+                            || x.LastName.Contains(query) || x.Location.Contains(query) ||
+                            x.DeaNumber.ToString().Contains(query));
+            }
             return _ctx.Users.Where(p=>p.UseRole == Role.Doctor);
         }
 

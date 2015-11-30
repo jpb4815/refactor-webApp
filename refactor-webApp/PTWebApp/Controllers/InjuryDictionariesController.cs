@@ -17,19 +17,31 @@ namespace PTWebApp.Controllers
     [EnableCors("*", "*", "*")]
     public class InjuryDictionariesController : ApiController
     {
-        private PTAContext db = new PTAContext();
+        
+        private PTAContext _ctx;
+
+        public InjuryDictionariesController(PTAContext ctx)
+        {
+            _ctx = ctx;
+        }
 
         // GET: api/InjuryDictionaries
-        public IQueryable<InjuryDictionary> GetInjuryDictionaries()
+        public IQueryable<InjuryDictionary> GetInjuryDictionaries(string query = null)
         {
-            return db.InjuryDictionaries;
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                //search fields here
+                return
+                    _ctx.InjuryDictionaries.Where(id => id.Id.ToString().Contains(query) || id.Description.Contains(query) || id.Injury.Contains(query));
+            }
+            return _ctx.InjuryDictionaries;
         }
 
         // GET: api/InjuryDictionaries/5
         [ResponseType(typeof(InjuryDictionary))]
         public IHttpActionResult GetInjuryDictionary(int id)
         {
-            InjuryDictionary injuryDictionary = db.InjuryDictionaries.Find(id);
+            InjuryDictionary injuryDictionary = _ctx.InjuryDictionaries.Find(id);
             if (injuryDictionary == null)
             {
                 return NotFound();
@@ -52,11 +64,11 @@ namespace PTWebApp.Controllers
                 return BadRequest();
             }
 
-            db.Entry(injuryDictionary).State = EntityState.Modified;
+            _ctx.Entry(injuryDictionary).State = EntityState.Modified;
 
             try
             {
-                db.SaveChanges();
+                _ctx.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -82,8 +94,8 @@ namespace PTWebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.InjuryDictionaries.Add(injuryDictionary);
-            db.SaveChanges();
+            _ctx.InjuryDictionaries.Add(injuryDictionary);
+            _ctx.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = injuryDictionary.Id }, injuryDictionary);
         }
@@ -92,14 +104,14 @@ namespace PTWebApp.Controllers
         [ResponseType(typeof(InjuryDictionary))]
         public IHttpActionResult DeleteInjuryDictionary(int id)
         {
-            InjuryDictionary injuryDictionary = db.InjuryDictionaries.Find(id);
+            InjuryDictionary injuryDictionary = _ctx.InjuryDictionaries.Find(id);
             if (injuryDictionary == null)
             {
                 return NotFound();
             }
 
-            db.InjuryDictionaries.Remove(injuryDictionary);
-            db.SaveChanges();
+            _ctx.InjuryDictionaries.Remove(injuryDictionary);
+            _ctx.SaveChanges();
 
             return Ok(injuryDictionary);
         }
@@ -108,14 +120,14 @@ namespace PTWebApp.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _ctx.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool InjuryDictionaryExists(int id)
         {
-            return db.InjuryDictionaries.Count(e => e.Id == id) > 0;
+            return _ctx.InjuryDictionaries.Count(e => e.Id == id) > 0;
         }
     }
 }
