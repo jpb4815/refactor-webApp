@@ -10,6 +10,8 @@
         vm.patients = [];
         var currentPatientId = $routeParams.id;
 
+
+        //get a list of current patients from the database, if there is patient ID present return just that patient, othwerwise return the list
         if (currentPatientId) {
             $http.get("http://localhost:55928/api/Patients/" + currentPatientId).
                 //success
@@ -35,24 +37,25 @@
         }
 
         
-
+        //Take you to the user entry form to add a pateint
         vm.addPatient = function () {
             $location.path("/userentry");
             $location.replace(); //removes the history item.
         }
 
+        //opens the update patient window
         vm.openWindow = function (patient) {
             // opens the update view
             $location.url('/patientlist/' + patient.id);
             //wipe the history since they shouldn't use the back button
             $location.replace();
         }
-
+        //go back to the list view
         vm.goBackToView = function () {
             $location.url('/patientlist');
             $location.replace();
         }
-
+        //save an updated patient
         vm.save = function () {
             vm.errorMessage = null;
             vm.successMessage = null;
@@ -73,7 +76,7 @@
                     vm.errorMessage = "Failed to update Patient ...";
                 });
         }
-
+        //delete a patient
         vm.deletePatient = function () {
             vm.errorMessage = null;
             vm.successMessage = null;
@@ -94,7 +97,7 @@
                     vm.errorMessage = "Failed to delete Patient ...";
                 });
         }
-
+        //search for a patient
         vm.search = function(searchText) {
 
             $http.get("http://localhost:55928/api/Patients?query=" + (searchText == null ? "" : searchText))
@@ -107,7 +110,7 @@
                     });
 
         };
-
+        //clear the search box and return to the list view
         vm.clear = function() {
             vm.searchText = null;
             angular.copy(vm.originalPatients, vm.patients);

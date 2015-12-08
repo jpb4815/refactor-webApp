@@ -8,6 +8,11 @@ using PTWebApp.DataModels;
 
 namespace DataAccess.Repositories
 {
+    /// <summary>
+    /// This is the repository with the methods exposed to get data fromthe BD through entity framework.
+    /// I am using Dependency Injection to inject the context object as a singleton into the contructor of this 
+    /// class. 
+    /// </summary>
     public class PtaRepository : IPtaRepository
     {
         private PTAContext _ctx;

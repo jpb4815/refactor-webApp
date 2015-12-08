@@ -20,7 +20,6 @@ using PTWebApp.Results;
 
 namespace PTWebApp.Controllers
 {
-    [Authorize]
     [EnableCors("*", "*", "*")]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController

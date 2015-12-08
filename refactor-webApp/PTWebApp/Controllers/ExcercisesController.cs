@@ -25,7 +25,13 @@ namespace PTWebApp.Controllers
             _ctx = ctx;
         }
 
-        // GET: api/Excercises
+
+        /// <summary>
+        /// GET: api/Excercises
+        /// gets a list of excercises or an excercise by ID
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns>list or single based on Query params</returns>
         public IEnumerable<Excercise> GetExcercises(string query = null)
         {
             if (!string.IsNullOrWhiteSpace(query))
@@ -53,7 +59,14 @@ namespace PTWebApp.Controllers
             return Ok(excercise);
         }
 
-        // PUT: api/Excercises/5
+
+        /// <summary>
+        /// PUT: api/Excercises/5
+        /// updates an excercise in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="excercise"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutExcercise(int id, Excercise excercise)
         {
@@ -88,7 +101,13 @@ namespace PTWebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Excercises
+
+        /// <summary>
+        /// POST: api/Excercises
+        /// adds a new Excercise to the database
+        /// </summary>
+        /// <param name="newExcercise"></param>
+        /// <returns></returns>
         [ResponseType(typeof(Excercise))]
         public IHttpActionResult PostExcercise(Excercise newExcercise)
         {
@@ -103,7 +122,13 @@ namespace PTWebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = newExcercise.Id }, newExcercise);
         }
 
-        // DELETE: api/Excercises/5
+        
+        /// <summary>
+        /// DELETE: api/Excercises/5
+        /// deletes an excercise 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(Excercise))]
         public IHttpActionResult DeleteExcercise(int id)
         {
@@ -119,6 +144,10 @@ namespace PTWebApp.Controllers
             return Ok(excercise);
         }
 
+        /// <summary>
+        /// good housekeeping
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -17,12 +17,22 @@ namespace PTWebApp.Controllers
         
         private PTAContext _ctx;
 
+        /// <summary>
+        /// Using DI to inject context in single use scope
+        /// </summary>
+        /// <param name="ctx"></param>
         public ProvidersController(PTAContext ctx)
         {
             _ctx = ctx;
         }
 
-        // GET: api/Providers
+
+        /// <summary>
+        /// GET: api/Providers
+        /// Gets a list of providers or a single provider based on query params
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public IQueryable<User> GetUsers(string query = null)
         {
             if (!string.IsNullOrWhiteSpace(query))
@@ -50,7 +60,14 @@ namespace PTWebApp.Controllers
             return Ok(user);
         }
 
-        // PUT: api/Providers/5
+        
+        /// <summary>
+        /// PUT: api/Providers/5
+        /// update provider
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutUser(int id, User user)
         {
@@ -85,7 +102,13 @@ namespace PTWebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Providers
+         
+        /// <summary>
+        /// POST: api/Providers
+        /// Add provider 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> PostUser(User user)
         {
@@ -100,7 +123,13 @@ namespace PTWebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
         }
 
-        // DELETE: api/Providers/5
+
+        /// <summary>
+        ///  DELETE: api/Providers/5
+        /// delete provider
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> DeleteUser(int id)
         {
@@ -116,6 +145,10 @@ namespace PTWebApp.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Dispose of context, good housekeeping
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -25,7 +25,13 @@ namespace PTWebApp.Controllers
             _ctx = ctx;
         }
 
-        // GET: api/ExcerciseDictionaries
+
+        /// <summary>
+        /// GET: api/ExcerciseDictionaries
+        /// Gets either a list of dictionary entries or a single entry basey on query params
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns>List or single item</returns>
         public IQueryable<ExcerciseDictionary> GetExcerciseDictionaries(string query = null)
         {
             if (!string.IsNullOrWhiteSpace(query))
@@ -53,7 +59,14 @@ namespace PTWebApp.Controllers
             return Ok(excerciseDictionary);
         }
 
-        // PUT: api/ExcerciseDictionaries/5
+
+        /// <summary>
+        /// PUT: api/ExcerciseDictionaries/5
+        /// Updates a dictionary entry
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="excerciseDictionary"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutExcerciseDictionary(int id, ExcerciseDictionary excerciseDictionary)
         {
@@ -88,7 +101,13 @@ namespace PTWebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ExcerciseDictionaries
+
+        /// <summary>
+        /// POST: api/ExcerciseDictionaries
+        /// adds a dictionary entry
+        /// </summary>
+        /// <param name="excerciseDictionary"></param>
+        /// <returns></returns>
         [ResponseType(typeof(ExcerciseDictionary))]
         public async Task<IHttpActionResult> PostExcerciseDictionary(ExcerciseDictionary excerciseDictionary)
         {
@@ -103,7 +122,13 @@ namespace PTWebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = excerciseDictionary.Id }, excerciseDictionary);
         }
 
-        // DELETE: api/ExcerciseDictionaries/5
+
+        /// <summary>
+        /// DELETE: api/ExcerciseDictionaries/5
+        /// deletes a dictionary entry
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(ExcerciseDictionary))]
         public async Task<IHttpActionResult> DeleteExcerciseDictionary(int id)
         {
@@ -119,6 +144,10 @@ namespace PTWebApp.Controllers
             return Ok(excerciseDictionary);
         }
 
+        /// <summary>
+        /// good housekeeping
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

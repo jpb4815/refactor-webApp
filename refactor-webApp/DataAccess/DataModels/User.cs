@@ -7,6 +7,10 @@ using System.Web;
 
 namespace PTWebApp.DataModels
 {
+    /// <summary>
+    /// Users of the system. an Enum divides the users up into admin, therapists, providers, and patients. 
+    /// There is a nullable FK on progran ID not every user will have a program.
+    /// </summary>
     public class User
     {
         public User()
@@ -43,6 +47,7 @@ namespace PTWebApp.DataModels
         public string InjuryType { get; set; }
         public string Location { get; set; }
         public string DeaNumber { get; set; }
+        public int ProgramId { get; set; }
         public List<User> Users { get; set; } 
     }
 }

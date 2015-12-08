@@ -6,6 +6,9 @@ using System.Web;
 
 namespace DataAccess.DataModels
 {
+    /// <summary>
+    /// injury dictionary table
+    /// </summary>
     public class InjuryDictionary
     {        
         public int Id { get; set; }

@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\refactor-webApp.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -74,16 +75,10 @@
     <Content Include="app\Admin\userEntryForm.html" />
     <Content Include="app\common.services\commonServices.js" />
     <Content Include="app\common.services\ptaResources.js" />
-    <Content Include="app\directives\patientCardDirective.js" />
     <Content Include="app\directives\ptaDashboardDirective.js" />
-    <Content Include="app\directives\validateEquals.js" />
     <Content Include="app\excercise\excerciseUpdateTemplate.html" />
-    <Content Include="app\loginController.js" />
-    <Content Include="app\patient\patientCardTemplate.html" />
     <Content Include="app\patient\patientUpdateTemplate.html" />
     <Content Include="app\provider\providerUpdateTemplate.html" />
-    <Content Include="app\results\resultsController.js" />
-    <Content Include="app\results\resultsViewTemplate.html" />
     <Content Include="app\therapist\therapistUpdateTemplate.html" />
     <Content Include="Content\app.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -151,8 +146,6 @@
     <Content Include="app\excercise\excerciseViewTemplate.html" />
     <Content Include="app\patient\patientController.js" />
     <Content Include="app\patient\patientViewTemplate.html" />
-    <Content Include="app\programs\programsController.js" />
-    <Content Include="app\programs\programsViewTemplate.html" />
     <Content Include="app\Admin\excerciseDictionaryTemplate.html" />
     <Content Include="app\Admin\injuryDictionaryTemplate.html" />
     <Content Include="app\provider\providerController.js" />

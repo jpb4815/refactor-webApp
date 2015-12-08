@@ -5,6 +5,9 @@ using System.Web;
 
 namespace DataAccess.DataModels
 {
+    /// <summary>
+    /// results table. this is where the data for the graphical metrics is stored
+    /// </summary>
     public class Results
     {
         public int  Id { get; set; }

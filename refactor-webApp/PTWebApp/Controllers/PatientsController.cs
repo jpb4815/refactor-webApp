@@ -19,12 +19,21 @@ namespace PTWebApp.Controllers
     {
         private PTAContext _ctx;
 
+        /// <summary>
+        /// Using DI to inject context in single instance scope
+        /// </summary>
+        /// <param name="ctx"></param>
         public PatientsController(PTAContext ctx)
         {
             _ctx = ctx;
         }
 
-        // GET: api/Patients
+        /// <summary>
+        /// GET: api/Patients
+        /// gets a list of Users whose role is patient, or gets a single patient based on query params
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public IQueryable<User> GetUsers(string query = null)
         {
             if (!string.IsNullOrWhiteSpace(query))
@@ -32,8 +41,8 @@ namespace PTWebApp.Controllers
                 return
                     _ctx.Users.Where(
                         x =>
-                            x.UseRole == Role.Patient & x.FirstName.Contains(query) 
-                            || x.LastName.Contains(query) ||
+                            x.UseRole == Role.Patient & x.FirstName.Contains(query)
+                            || x.LastName.Contains(query) ||x.UserName.Contains(query) ||
                             x.SocialSecurityNumber.ToString().Contains(query));
             }
             return _ctx.Users.Where(u=>u.UseRole == Role.Patient);
@@ -52,7 +61,14 @@ namespace PTWebApp.Controllers
             return Ok(user);
         }
 
-        // PUT: api/Patients/5
+
+        /// <summary>
+        /// PUT: api/Patients/5
+        /// updates patient in db
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(int id, User user)
         {
@@ -87,7 +103,13 @@ namespace PTWebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Patients
+       
+        /// <summary>
+        ///  POST: api/Patients
+        /// Adds a patient to the database
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
         {
@@ -102,7 +124,13 @@ namespace PTWebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
         }
 
-        // DELETE: api/Patients/5
+         
+        /// <summary>
+        /// DELETE: api/Patients/5
+        /// deletes a patient from the database 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(User))]
         public IHttpActionResult DeleteUser(int id)
         {
@@ -118,6 +146,10 @@ namespace PTWebApp.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// good housekeeping to dispose of context
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)

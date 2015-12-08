@@ -1,17 +1,20 @@
 ﻿(function () {
     "use strict";
 
+    //Dashboard directive, this controlls how the dashboard works. All of the gridster settings live in here
     angular.module('app').directive('ptaDashboard', ["$localStorage",
         function ($localStorage) {
             return {
+                //isolate scope defined
                 scope: {
-
                 },
+                //element directive for the dashboard
                 template: '<pt-DashBoard></pt-Dashboard>',
                 link: function (scope) {
 
                     scope.title = "Admin Dashboard";
 
+                    //set the gridster otpions
                     scope.gridsterOpts = {
                         columns: 12,
                         margins: [20, 20],
@@ -21,6 +24,7 @@
                         swapping: false
                     };
 
+                    //definitions for each type of widget, program, provider, and patient
                     scope.widgetDefinitions = [
                         {
                             title: "Program",
@@ -68,6 +72,8 @@
                     ];
                     scope.widgets = $localStorage.widgets || [                                        
                     ];
+
+                    //load widgets from local storage if they are there, if not get them from the "server"
                     scope.$watch('widgets', function() {
                         $localStorage.widgets = scope.widgets;
                     }, true);

@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\DataAccess.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -94,6 +95,7 @@
     <Compile Include="DataContext\PTAContextMigrationsConfiguration.cs" />
     <Compile Include="DataModels\Excercise.cs" />
     <Compile Include="DataModels\ExcerciseDictionary.cs" />
+    <Compile Include="DataModels\ExcerciseList.cs" />
     <Compile Include="DataModels\InjuryDictionary.cs" />
     <Compile Include="DataModels\Program.cs" />
     <Compile Include="DataModels\Results.cs" />

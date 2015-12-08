@@ -52,10 +52,7 @@
             $location.replace();
         }
 
-        vm.updateTherapist = function(therapist) {
-            console.log(therapist.id);
-        }
-
+        //save therapist to the database
         vm.save = function() {
             vm.errorMessage = null;
             vm.successMessage = null;
@@ -77,6 +74,7 @@
                 });
         }
 
+        //delete therapist
         vm.deleteTherapist = function() {
             vm.errorMessage = null;
             vm.successMessage = null;
@@ -98,6 +96,7 @@
                 });
         }
 
+        //search for a therapist
         vm.search = function(searchText) {
             $http.get("http://localhost:55928/api/Therapists?query=" + (searchText == null ? "" : searchText))
                 .then(function(response) {
@@ -110,6 +109,7 @@
                     });
         };
 
+        //clear the search box
         vm.clear = function() {
             vm.searchText = null;
             angular.copy(vm.originalTherapists, vm.therapists);

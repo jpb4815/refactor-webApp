@@ -23,6 +23,8 @@
         vm.successMessage = null;
         vm.errorMessage = null;
 
+
+        //save the form data to the user table
         vm.saveUser = function () {
             $http.post("http://localhost:55928/api/Users/", vm.user)
                 .then(function() {

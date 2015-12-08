@@ -1,6 +1,7 @@
 ﻿(function () {
     "use strict";
 
+    //controller to load the provider info into the provider widget via the modal dialogue
     angular.module('app').controller('ptaSelectProviderController',
     ["$scope", "dataService",
         function ($scope, dataService) {
@@ -15,6 +16,8 @@
                 }
             });
 
+
+            //Save the settings into local storage
             $scope.saveSettings = function () {
                 $scope.item.widgetSettings.id = $scope.selectedProvider.id;
                 $scope.$parent.selectedProvider = $scope.selectedProvider;

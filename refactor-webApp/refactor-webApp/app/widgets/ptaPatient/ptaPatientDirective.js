@@ -1,6 +1,6 @@
 ﻿(function () {
     "use strict";
-
+    //custom directive to display the patient widget on tha dash board
     angular.module('app').directive('ptaPatient',
     ['dataService',
     function (dataService) {

@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
-    angular.module('app').config(['$routeProvider', function ($routeProvider) {
-
+    angular.module('app').config(['$routeProvider', function ($routeProvider, authProvider) {
+        //array or urls and route config objects
         var routes = [
             {
                 url: '/dashboard',
@@ -90,17 +90,19 @@
                 }
             },
             {
-                url: '/register',
+                url: '/programs',
                 config: {
-                    templateUrl: "app/login/registerTemplate.html"
+                    templateUrl: "app/therapist/programViewerTemplate.html"
                 }
             }
         ];
 
+        //loop through the array and create a when statement for each route. much more effecient than writing all of those when statements
         routes.forEach(function (route) {
             $routeProvider.when(route.url, route.config);
         });
 
+        //default view
         $routeProvider.otherwise({ redirectTo: '/dashboard' });
 
     }]);

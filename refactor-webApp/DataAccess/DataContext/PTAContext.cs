@@ -10,7 +10,10 @@ using Patient = PTWebApp.Models;
 
 namespace PTWebApp.DataContext
 {
-    
+    /// <summary>
+    /// This is the main context class for the application, 
+    /// this also contains the migration strategy for the entity framework when there are model changes
+    /// </summary>
     public class PTAContext : DbContext
     {
         public PTAContext()
@@ -23,6 +26,7 @@ namespace PTWebApp.DataContext
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Excercise>Excercises { get; set; }
+        public DbSet<ExcerciseList> ExcerciseList { get; set; }
         public DbSet<ExcerciseDictionary> ExcerciseDictionaries { get; set; }
         public DbSet<InjuryDictionary>InjuryDictionaries { get; set; }  
         public DbSet<Program>Programs { get; set; } 

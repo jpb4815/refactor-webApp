@@ -1,6 +1,6 @@
 ﻿(function() {
     "use strict";
-
+    //custom widget to display the program wodget on the dashboard
     angular.module('app').directive('ptaProgram',
         ['dataService',
         function (dataService) {

@@ -1,4 +1,6 @@
 ﻿(function () {
+    //this is a JSON store to simulate going to a server for my widget data, due to time constraints I am loading the data for the widgets from here
+
     "use strict";
     angular.module('app').factory('dataService',
     ['$timeout',

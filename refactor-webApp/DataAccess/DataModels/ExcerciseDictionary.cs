@@ -6,6 +6,9 @@ using System.Web;
 
 namespace DataAccess.DataModels
 {
+    /// <summary>
+    /// excercise dictionary table
+    /// </summary>
     public class ExcerciseDictionary
     {   
         public int Id { get; set; }

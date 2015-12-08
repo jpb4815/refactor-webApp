@@ -11,6 +11,7 @@
 
         var currentProviderId = $routeParams.id;
 
+        //get a provider by id, otherwise get the list of providers in the database
         if (currentProviderId) {
             $http.get("http://localhost:55928/api/Providers/" + currentProviderId).
                     //success
@@ -35,10 +36,13 @@
                     });
         }
 
+        //reroute to the user entry screen to add a provider
         vm.addProvider = function () {
             $location.path("/userentry");
             $location.replace(); //removes the history item.
         }
+
+        //open the update provider screen
         vm.openWindow = function (provider) {
             // opens the update view
             $location.url('/provider/' + provider.id);
@@ -46,15 +50,13 @@
             $location.replace();
         }
 
+        //go back to the list view from the update screen
         vm.goBackToView = function() {
             $location.url('/provider');
             $location.replace();
         }
 
-        vm.updateProvider = function(provider) {
-            console.log(provider.id);
-        }
-
+        //save the updated provider
         vm.save = function () {
             vm.errorMessage = null;
             vm.successMessage = null;
@@ -76,6 +78,7 @@
                 });
         }
 
+        //delete a provider
         vm.deleteProvider = function() {
             vm.errorMessage = null;
             vm.successMessage = null;
@@ -97,6 +100,7 @@
                 });
         }
 
+        //search for a provider
         vm.search = function(searchText) {
             $http.get("http://localhost:55928/api/Providers?query=" + (searchText == null ? "" : searchText))
                 .then(function(response) {
@@ -109,6 +113,7 @@
                     });
         }
 
+        //clear search field and return to list view
         vm.clear = function() {
             vm.searchText = null;
             angular.copy(vm.originalProviders, vm.providers);

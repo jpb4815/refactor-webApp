@@ -8,80 +8,77 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using System.Web.WebPages;
+using DataAccess.DataModels;
 using PTWebApp.DataContext;
-using PTWebApp.DataModels;
 
 namespace PTWebApp.Controllers
 {
-    [EnableCors("*", "*", "*")]
-    public class TherapistsController : ApiController
+    public class ProgramsController : ApiController
     {
         private PTAContext _ctx;
 
         /// <summary>
-        /// Using DI to inject contect in single use scope
+        /// Using DI to inject context into CTOR in single use scope
         /// </summary>
         /// <param name="ctx"></param>
-        public TherapistsController(PTAContext ctx)
+        public ProgramsController(PTAContext ctx)
         {
             _ctx = ctx;
         }
 
-        // 
+
         /// <summary>
-        /// get a list of therapist or a single therapist depending on the query params
-        ///  GET: api/Therapists
+        /// GET: api/Programs
+        /// Gets a list of programs or a single program based on query params
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public IQueryable<User> GetUsers(string query = null)
+        public IQueryable<Program> GetPrograms(string query = null)
         {
-            if (!string.IsNullOrWhiteSpace(query))
+            if (!string.IsNullOrWhiteSpace((query)))
             {
-                return
-                    _ctx.Users.Where(
-                        t => t.UseRole == Role.Therapist & t.Id.ToString().Contains(query) || t.FirstName.Contains(query) 
-                        || t.LastName.Contains(query));
+                return _ctx.Programs.Where(p=>p.UserId.ToString() == query);
             }
-            return _ctx.Users.Where(t=>t.UseRole == Role.Therapist);
+            return _ctx.Programs;
         }
 
-        // GET: api/Therapists/5
-        [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> GetUser(int id)
+        // GET: api/Programs/5
+        [ResponseType(typeof(Program))]
+        public async Task<IHttpActionResult> GetProgram(int id)
         {
-            User user = await _ctx.Users.FindAsync(id);
-            if (user == null)
+            Program program = await _ctx.Programs.FindAsync(id);
+            if (program == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(program);
         }
 
-        // 
+
         /// <summary>
-        /// update a therapist PUT: api/Therapists/5
+        /// PUT: api/Programs/5
+        /// update a program
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="user"></param>
+        /// <param name="program"></param>
         /// <returns></returns>
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutUser(int id, User user)
+        public async Task<IHttpActionResult> PutProgram(int id, Program program)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != user.Id)
+            if (id != program.Id)
             {
                 return BadRequest();
             }
 
-            _ctx.Entry(user).State = EntityState.Modified;
+            _ctx.Entry(program).State = EntityState.Modified;
 
             try
             {
@@ -89,7 +86,7 @@ namespace PTWebApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!ProgramExists(id))
                 {
                     return NotFound();
                 }
@@ -102,49 +99,51 @@ namespace PTWebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // 
+
         /// <summary>
-        /// add a therapist POST: api/Therapists
+        /// POST: api/Programs
+        /// add a program
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="program"></param>
         /// <returns></returns>
-        [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> PostUser(User user)
+        [ResponseType(typeof(Program))]
+        public async Task<IHttpActionResult> PostProgram(Program program)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _ctx.Users.Add(user);
+            _ctx.Programs.Add(program);
             await _ctx.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+            return CreatedAtRoute("DefaultApi", new { id = program.Id }, program);
         }
 
-        //
+
         /// <summary>
-        /// delete therapists  DELETE: api/Therapists/5
+        /// DELETE: api/Programs/5
+        /// Delete a program
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [ResponseType(typeof(User))]
-        public async Task<IHttpActionResult> DeleteUser(int id)
+        [ResponseType(typeof(Program))]
+        public async Task<IHttpActionResult> DeleteProgram(int id)
         {
-            User user = await _ctx.Users.FindAsync(id);
-            if (user == null)
+            Program program = await _ctx.Programs.FindAsync(id);
+            if (program == null)
             {
                 return NotFound();
             }
 
-            _ctx.Users.Remove(user);
+            _ctx.Programs.Remove(program);
             await _ctx.SaveChangesAsync();
 
-            return Ok(user);
+            return Ok(program);
         }
 
         /// <summary>
-        /// dispose of context object
+        /// Good house keeping, dispose of context
         /// </summary>
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
@@ -156,9 +155,9 @@ namespace PTWebApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UserExists(int id)
+        private bool ProgramExists(int id)
         {
-            return _ctx.Users.Count(e => e.Id == id) > 0;
+            return _ctx.Programs.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿(function () {
     "use strict";
-
+    //custom directive to display the provider widget on the dashboard
     angular.module('app').directive('ptaProvider',
     ['dataService',
     function (dataService) {

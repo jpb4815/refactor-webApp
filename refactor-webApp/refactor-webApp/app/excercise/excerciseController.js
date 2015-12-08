@@ -17,6 +17,8 @@
 
         var currentExcerciseId = $routeParams.id;
 
+
+        //get exercise list, if there is an id get that excercise otherwise get all of the excercises
         if (currentExcerciseId) {
             $http.get(url + "/api/Excercises/" + currentExcerciseId).
                 then(function(excercise) {
@@ -39,11 +41,12 @@
         }
 
         
-           
+        //toggle the add exercise form show and hide   
         vm.addExcercise = function () {
             vm.isAddExe = !vm.isAddExe;
         }
 
+        //save a new exercise to the database table
         vm.saveNewExcercise = function (newExcercise) {
             $http.post(url + "/api/excercises", vm.newExcercise)
                 .then(function(result) {
@@ -58,6 +61,8 @@
                     });
         }
 
+
+        //open the update excercise window and allow update or delet
        vm.openWindow = function(excercise) {
            //opens up the update view
            $location.url('/excercise/' + excercise.id);
@@ -65,11 +70,13 @@
            $location.replace();
        }
 
+        // go back to the list view
        vm.goBackToView = function () {
            $location.url('/excercise');
            $location.replace();
        }
 
+        //save an updated exercise to the database
         vm.saveUpdatedExcercise = function() {
             vm.errorMessage = null;
             vm.successMessage = null;
@@ -79,6 +86,8 @@
                 function() {
                     vm.saving = false;
                     vm.successMessage = "Excercise has been Updated ...!";
+
+                    //using time out her so that we see our message
                     $timeout(function() {
                         vm.saving = false;
                         vm.successMessage = null;
@@ -91,6 +100,8 @@
                 });
         }
 
+
+        //Delete an exercise from the database
         vm.deleteExcercise = function () {
             vm.errorMessage = null;
             vm.successMessage = null;
@@ -112,6 +123,8 @@
                 });
         }
 
+
+        //search for an excercise by different fields
         vm.search = function (searchText) {
 
             $http.get("http://localhost:55928/api/Excercises?query=" + (searchText == null ? "" : searchText))
@@ -126,6 +139,7 @@
 
         }
 
+        //clear search box and return to list view
         vm.clear = function() {
             vm.searchText = null;
             angular.copy(vm.originalExcercises, vm.excercises);

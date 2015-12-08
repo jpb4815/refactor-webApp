@@ -20,12 +20,22 @@ namespace PTWebApp.Controllers
         
         private PTAContext _ctx;
 
+        /// <summary>
+        /// using DI to inject context in single use scope
+        /// </summary>
+        /// <param name="ctx"></param>
         public InjuryDictionariesController(PTAContext ctx)
         {
             _ctx = ctx;
         }
 
-        // GET: api/InjuryDictionaries
+
+        /// <summary>
+        /// GET: api/InjuryDictionaries
+        /// Gets a list of dictionary entries or a single entry based on query
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public IQueryable<InjuryDictionary> GetInjuryDictionaries(string query = null)
         {
             if (!string.IsNullOrWhiteSpace(query))
@@ -50,7 +60,14 @@ namespace PTWebApp.Controllers
             return Ok(injuryDictionary);
         }
 
-        // PUT: api/InjuryDictionaries/5
+
+        /// <summary>
+        /// PUT: api/InjuryDictionaries/5
+        /// Updates a dictionary entry
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="injuryDictionary"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutInjuryDictionary(int id, InjuryDictionary injuryDictionary)
         {
@@ -85,7 +102,13 @@ namespace PTWebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/InjuryDictionaries
+
+        /// <summary>
+        /// POST: api/InjuryDictionaries
+        /// adds a dictionary entry
+        /// </summary>
+        /// <param name="injuryDictionary"></param>
+        /// <returns></returns>
         [ResponseType(typeof(InjuryDictionary))]
         public IHttpActionResult PostInjuryDictionary(InjuryDictionary injuryDictionary)
         {
@@ -100,7 +123,13 @@ namespace PTWebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = injuryDictionary.Id }, injuryDictionary);
         }
 
-        // DELETE: api/InjuryDictionaries/5
+         
+        /// <summary>
+        /// DELETE: api/InjuryDictionaries/5
+        /// deletes a dictionary entry
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [ResponseType(typeof(InjuryDictionary))]
         public IHttpActionResult DeleteInjuryDictionary(int id)
         {
@@ -116,6 +145,10 @@ namespace PTWebApp.Controllers
             return Ok(injuryDictionary);
         }
 
+        /// <summary>
+        /// good housekeeping to dispose of context
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
