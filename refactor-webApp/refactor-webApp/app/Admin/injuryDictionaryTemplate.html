@@ -1,0 +1,60 @@
+﻿<div ng-controller="injuryDictionaryController as vm">
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">
+            <h2>Injury Dictionary</h2>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <div>
+                    <input type="text" id="searchField" name="searchField" ng-model="vm.searchText"/>
+                    <button class="btn btn-success" ng-click="vm.search(vm.searchText)">Search</button>
+                    <button class="btn btn-danger" ng-click="vm.clear()">Clear</button>
+                </div>
+                <tr>
+                    <td class="col-sm-2">Injury ID</td>
+                    <td class="col-sm-2">Injury</td>
+                    <td class="col-sm-2">ICD Code</td>
+                    <td class="col-sm-6">Description</td>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-click="vm.openWindow(injury)" ng-repeat="injury in vm.injuries track by injury.id">
+                        <td>{{injury.id}}</td>
+                        <td>{{injury.injury}}</td>
+                        <td>{{injury.icdCode}}</td>
+                        <td>{{injury.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-group">
+            <button class="btn" ng-click="vm.addInjury()">Add Injury</button>
+        </div>
+    </div>
+    <div class="panel panel-primary" ng-show="vm.isAddInjury">
+        <div class="panel-header">
+            <h2>Add Injury</h2>
+            <form role="form" name="injuryDictionaryForm" class="form-horizontal" novalidate ng-submit="vm.saveNewInjury()">
+                <div>
+                    <label for="injury" class="col-sm-3 control-label">Injury</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="injury" placeholder="Injury" class="form-control" ng-model="vm.newInjury.injury" required />
+                    </div>
+                    <label for="icdCode" class="col-sm-3 control-label">ICD Code</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="icdCode" placeholder="ICD Code" class="form-control" ng-model="vm.newInjury.icdCode" required />
+                    </div>
+                    <label for="description" class="col-sm-3 control-label">Description</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="description" placeholder="Description" class="form-control" ng-model="vm.newInjury.description" required />
+                    </div>
+                    <div>
+                        <input type="submit" class="btn" value="Save" ng-disabled="injuryDictionaryForm.$invalid" />
+                    </div> 
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
