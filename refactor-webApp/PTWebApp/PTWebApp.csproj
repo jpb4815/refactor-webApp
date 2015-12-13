@@ -220,34 +220,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
-    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
-    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
-    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
-    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
-    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ExcerciseDictionariesController.cs" />
     <Compile Include="Controllers\ExcerciseListsController.cs" />
@@ -261,7 +233,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\JsonSerializer.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -271,81 +242,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\font-awesome-4.4.0\css\font-awesome.css" />
-    <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\font-awesome-4.4.0\HELP-US-OUT.txt" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\HelpPage\Views\Web.config" />
-    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\font-awesome-4.4.0\fonts\FontAwesome.otf" />
-    <Content Include="Content\font-awesome-4.4.0\less\animated.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\bordered-pulled.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\core.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\fixed-width.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\font-awesome.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\icons.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\larger.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\list.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\mixins.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\path.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\rotated-flipped.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\stacked.less" />
-    <Content Include="Content\font-awesome-4.4.0\less\variables.less" />
-    <Content Include="Content\font-awesome-4.4.0\scss\font-awesome.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_animated.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_bordered-pulled.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_core.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_fixed-width.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_icons.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_larger.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_list.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_mixins.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_path.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_rotated-flipped.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_stacked.scss" />
-    <Content Include="Content\font-awesome-4.4.0\scss\_variables.scss" />
     <Content Include="XML\PTWebAPpp.xml">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -355,34 +256,18 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{72688102-3ab0-43f6-a023-c1d7ee4e100b}</Project>
       <Name>DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\models\models.csproj">
-      <Project>{b1eb6842-872c-4499-8387-02491a4eefd5}</Project>
-      <Name>models</Name>
     </ProjectReference>
     <ProjectReference Include="..\refactor-webApp\FrontEnd.csproj">
       <Project>{ea06013f-4698-4de9-9e2a-5c9a10c16728}</Project>

@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTWebApp", "PTWebApp\PTWebA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{72688102-3AB0-43F6-A023-C1D7EE4E100B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "models", "models\models.csproj", "{B1EB6842-872C-4499-8387-02491A4EEFD5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{72688102-3AB0-43F6-A023-C1D7EE4E100B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72688102-3AB0-43F6-A023-C1D7EE4E100B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72688102-3AB0-43F6-A023-C1D7EE4E100B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B1EB6842-872C-4499-8387-02491A4EEFD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1EB6842-872C-4499-8387-02491A4EEFD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B1EB6842-872C-4499-8387-02491A4EEFD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B1EB6842-872C-4499-8387-02491A4EEFD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

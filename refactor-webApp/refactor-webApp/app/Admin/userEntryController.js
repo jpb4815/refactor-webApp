@@ -1,9 +1,9 @@
 ﻿(function() {
     "use strict";
 
-    angular.module('app').controller("userEntryController", ["$http","$timeout", userEntryController]);
+    angular.module('app').controller("userEntryController", ["$http", "$timeout", "$location", userEntryController]);
 
-    function userEntryController($http, $timeout) {
+    function userEntryController($http, $timeout, $location) {
         var vm = this;
         vm.roles = [
             { id: 1, name: "Admin" },
@@ -35,6 +35,8 @@
                             vm.saving = false;
                             vm.successMessage = null;
                             vm.user = {};
+                            //route back to the dashboard
+                            $location.url("/dashboard");
                         }, 1500);
                     },
                     function() {

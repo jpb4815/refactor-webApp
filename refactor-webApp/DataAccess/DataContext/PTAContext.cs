@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web;
 using DataAccess.DataModels;
 using PTWebApp.DataModels;
-using Patient = PTWebApp.Models;
 
 namespace PTWebApp.DataContext
 {

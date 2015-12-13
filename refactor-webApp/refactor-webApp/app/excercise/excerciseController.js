@@ -53,6 +53,7 @@
                         //success
                         var newlyAddedExcercise = result.data;
                         vm.excercises.splice(0, 0, newlyAddedExcercise);
+                        vm.isAddExe = false;
                     },
                     function() {
                         //error

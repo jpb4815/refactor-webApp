@@ -104,12 +104,6 @@
     <Compile Include="Repositories\IPtaRepository.cs" />
     <Compile Include="Repositories\PtaRepository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\models\models.csproj">
-      <Project>{b1eb6842-872c-4499-8387-02491a4eefd5}</Project>
-      <Name>models</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
